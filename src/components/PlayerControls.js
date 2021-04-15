@@ -2,22 +2,22 @@ import React from "react";
 
 function PlayerControls(props) {
 	return (
-		<div className="c-player--controls">
+		<div className="playerControls mt-2 offset-4">
 			<button className="skip-btn" onClick={() => props.SkipSong(false)}>
-				<i class="fas fa-backward"></i>
+				<i className="fas fa-backward"></i>
 			</button>
 			<button
 				className="play-btn"
 				onClick={() => props.setIsPlaying(!props.isPlaying)}
 			>
 				{props.isPlaying ? (
-					<i class="fas fa-pause"></i>
+					<i className="fas fa-pause"></i>
 				) : (
-					<i class="fas fa-play"></i>
+					<i className="fas fa-play"></i>
 				)}
 			</button>
 			<button className="skip-btn" onClick={() => props.SkipSong()}>
-				<i class="fas fa-forward"></i>
+				<i className="fas fa-forward"></i>
 			</button>
 		</div>
 	);

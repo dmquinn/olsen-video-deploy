@@ -1,0 +1,116 @@
+.player {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  bottom: 0px;
+  width: 100%;
+  /* height: 70px; */
+  background-color: #291b2b;
+  background: -webkit-gradient(linear, left top, left bottom, from(#291b2b), to(#3a243d));
+  background: linear-gradient(#291b2b, #3a243d);
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+}
+
+.player .albumArt {
+  height: 100px;
+  width: 100px;
+}
+
+.player .skip-btn,
+.player .play-btn {
+  background-color: transparent;
+  color: white;
+  outline: none;
+  border: none;
+}
+
+.player .play-btn {
+  position: relative;
+  top: 5px;
+  font-size: 30px;
+}
+
+.player .skip-btn:focus,
+.player .play-btn:focus {
+  outline: none;
+}
+
+.player .playThumb {
+  height: 70px;
+}
+
+.player,
+.playerDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sidebar {
+  position: fixed;
+  width: 200px;
+  background-color: black;
+  height: 100vh;
+}
+
+.logo {
+  height: 200px;
+  width: 200px;
+}
+
+* {
+  color: rgba(255, 255, 255, 0.788);
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: black;
+  overflow-x: hidden;
+}
+
+.albumArt {
+  height: 300px;
+  width: 300px;
+}
+
+.mainImg {
+  position: relative;
+  top: 0px;
+  width: 85vw;
+  height: auto;
+}
+
+.library {
+  position: relative;
+  left: 100px;
+  top: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mainContainer {
+  height: 100vh;
+  width: 100v;
+  position: absolute;
+  left: 200px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(black)), url("https://images.pexels.com/photos/2825033/pexels-photo-2825033.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background: linear-gradient(rgba(0, 0, 0, 0), black), url("https://images.pexels.com/photos/2825033/pexels-photo-2825033.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  color: white;
+  position: relative;
+}
+/*# sourceMappingURL=index.css.map */

@@ -41,19 +41,22 @@ function Player(props) {
 	};
 
 	return (
-		<div className="c-player">
+		<div className="player row-w-100 row-flex">
 			<audio
 				src={props.songs[props.currentSongIndex].src}
 				ref={audioEl}
 			></audio>
-			<h4>Playing now</h4>
-			<PlayerDetails song={props.songs[props.currentSongIndex]} />
-			<PlayerControls
-				isPlaying={isPlaying}
-				setIsPlaying={setIsPlaying}
-				SkipSong={SkipSong}
-			/>
-			<p>
+			<div className="col-sm">
+				<PlayerDetails song={props.songs[props.currentSongIndex]} />
+			</div>
+			<div className="col-sm">
+				<PlayerControls
+					isPlaying={isPlaying}
+					setIsPlaying={setIsPlaying}
+					SkipSong={SkipSong}
+				/>
+			</div>
+			<p className="upNext col-sm">
 				Next up:{" "}
 				<span>
 					{props.songs[props.nextSongIndex].title} by{" "}

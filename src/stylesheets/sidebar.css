@@ -1,0 +1,12 @@
+.sidebar {
+  position: fixed;
+  width: 200px;
+  background-color: black;
+  height: 100vh;
+}
+
+.logo {
+  height: 200px;
+  width: 200px;
+}
+/*# sourceMappingURL=sidebar.css.map */

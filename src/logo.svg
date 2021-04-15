@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="372.76672mm"
+   height="164.70995mm"
+   viewBox="0 0 372.76672 164.70995"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient879">
+      <stop
+         style="stop-color:#008080;stop-opacity:1;"
+         offset="0"
+         id="stop875" />
+      <stop
+         style="stop-color:#008080;stop-opacity:0;"
+         offset="1"
+         id="stop877" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient849">
+      <stop
+         style="stop-color:#008080;stop-opacity:1;"
+         offset="0"
+         id="stop845" />
+      <stop
+         style="stop-color:#008080;stop-opacity:0;"
+         offset="1"
+         id="stop847" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient849"
+       id="linearGradient851"
+       x1="51.000214"
+       y1="132.46761"
+       x2="62.486763"
+       y2="-24.673655"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient879"
+       id="linearGradient881"
+       x1="427.63126"
+       y1="172.12158"
+       x2="447.94373"
+       y2="60.937454"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-21.166667)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="88.983955"
+     inkscape:cy="261.12317"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1267"
+     inkscape:window-height="730"
+     inkscape:window-x="83"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-196.07423,-3.3307982)">
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:#ff00ff;fill-rule:evenodd;stroke:#cccccc;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:248.504;paint-order:stroke markers fill"
+       id="path835"
+       sodipodi:sides="5"
+       sodipodi:cx="68.035713"
+       sodipodi:cy="59.720242"
+       sodipodi:r1="81.207718"
+       sodipodi:r2="40.603863"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.1519173"
+       inkscape:flatsided="true"
+       inkscape:rounded="0.26"
+       inkscape:randomized="0.1"
+       d="M 139.17194,105.12611 C 126.08627,126.2706 72.836565,141.18395 47.956207,137.43533 23.075848,133.68671 -8.0271004,85.285611 -6.9077743,60.285978 -5.7884481,35.286344 13.636502,-14.092571 36.707001,-21.36896 59.7775,-28.645349 115.96976,-13.172249 133.8833,4.5183945 151.79684,22.209038 152.25761,83.981625 139.17194,105.12611 Z"
+       inkscape:transform-center-y="-26.546471"
+       transform="rotate(24.043917,97.065985,548.402)"
+       inkscape:transform-center-x="-14.124487" />
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:url(#linearGradient851);fill-opacity:1;fill-rule:evenodd;stroke:#cccccc;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:248.504;paint-order:stroke markers fill"
+       id="path843"
+       sodipodi:sides="5"
+       sodipodi:cx="68.035713"
+       sodipodi:cy="59.720242"
+       sodipodi:r1="81.207718"
+       sodipodi:r2="40.603863"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.1519173"
+       inkscape:flatsided="true"
+       inkscape:rounded="0.26"
+       inkscape:randomized="0.1"
+       d="M 139.17194,105.12611 C 126.08627,126.2706 72.836565,141.18395 47.956207,137.43533 23.075848,133.68671 -8.0271004,85.285611 -6.9077743,60.285978 -5.7884481,35.286344 13.636502,-14.092571 36.707001,-21.36896 59.7775,-28.645349 115.96976,-13.172249 133.8833,4.5183945 151.79684,22.209038 152.25761,83.981625 139.17194,105.12611 Z"
+       inkscape:transform-center-y="-26.546471"
+       transform="rotate(24.043917,97.065985,548.402)"
+       inkscape:transform-center-x="-14.124487" />
+    <text
+       xml:space="preserve"
+       style="font-size:81.8444px;line-height:1.25;font-family:sans-serif;fill:#ff00ff;stroke-width:5.11527"
+       x="368.98557"
+       y="113.25739"
+       id="text869"><tspan
+         sodipodi:role="line"
+         id="tspan867"
+         x="368.98557"
+         y="113.25739"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ff00ff;stroke-width:5.11527">INGA</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:81.8444px;line-height:1.25;font-family:sans-serif;fill:url(#linearGradient881);fill-opacity:1;stroke-width:5.11527"
+       x="368.98557"
+       y="113.25739"
+       id="text873"><tspan
+         sodipodi:role="line"
+         id="tspan871"
+         x="368.98557"
+         y="113.25739"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:url(#linearGradient881);fill-opacity:1;stroke-width:5.11527">INGA</tspan></text>
+  </g>
+</svg>

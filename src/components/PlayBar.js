@@ -17,7 +17,7 @@ function PlayBar() {
 		});
 	}, [currentSongIndex]);
 	return (
-		<div className="playBar">
+		<div className="playBar row-w-100">
 			<Player
 				currentSongIndex={currentSongIndex}
 				setCurrentSongIndex={setCurrentSongIndex}

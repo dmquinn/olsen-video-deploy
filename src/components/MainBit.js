@@ -7,13 +7,12 @@ function MainBit() {
 
 	return (
 		<div className="library">
-			<h1>Hello</h1>
 			{songList.map((song, i) => {
 				return (
 					<>
 						<img className="albumArt" src={song.img_src} alt="" />
-						<h4>{song.title}</h4>
 						<h4>{song.artist}</h4>;
+						<h4 style={{ fontWeight: "900" }}>{song.title}</h4>
 					</>
 				);
 			})}
