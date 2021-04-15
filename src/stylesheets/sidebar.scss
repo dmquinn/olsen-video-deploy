@@ -5,6 +5,22 @@
 	height: 100vh;
 }
 .logo {
-	height: 200px;
-	width: 200px;
+	height: 50px;
+	width: 50px;
+	animation: rotate 4s linear infinite;
+	filter: drop-shadow(5px 5px 15px rgba(245, 9, 205, 0.432));
 }
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+// @media all and (max-width: 768px) {
+// 	.sidebar,
+// 	.offset-2 {
+// 		visibility: hidden;
+// 	}
+// }

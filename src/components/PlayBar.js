@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Player from "./Player";
 import { songList } from "../Songs";
-function PlayBar() {
-	console.log("songList", songList);
-	const [songs] = useState(songList);
-	const [currentSongIndex, setCurrentSongIndex] = useState(0);
-	const [nextSongIndex, setNextSongIndex] = useState(0);
 
+const PlayBar = (props) => {
+	console.log("props ok", props);
+	const [songs] = useState(songList);
+	const [currentSongIndex, setCurrentSongIndex] = useState(
+		props.currentSongIndex
+	);
+	const [nextSongIndex, setNextSongIndex] = useState(0);
+	console.log("songList", currentSongIndex);
 	useEffect(() => {
 		setNextSongIndex(() => {
 			if (currentSongIndex + 1 > songs.length - 1) {
@@ -15,17 +18,17 @@ function PlayBar() {
 				return currentSongIndex + 1;
 			}
 		});
-	}, [currentSongIndex]);
+	}, []);
+
 	return (
 		<div className="playBar row-w-100">
 			<Player
-				currentSongIndex={currentSongIndex}
+				currentSongIndex={props.currentSongIndex}
 				setCurrentSongIndex={setCurrentSongIndex}
 				nextSongIndex={nextSongIndex}
 				songs={songs}
 			/>
 		</div>
 	);
-}
-
+};
 export default PlayBar;

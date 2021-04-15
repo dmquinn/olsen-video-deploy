@@ -8,27 +8,15 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="372.76672mm"
+   width="158.17189mm"
    height="164.70995mm"
-   viewBox="0 0 372.76672 164.70995"
+   viewBox="0 0 158.17189 164.70995"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="logo.svg">
   <defs
      id="defs2">
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient879">
-      <stop
-         style="stop-color:#008080;stop-opacity:1;"
-         offset="0"
-         id="stop875" />
-      <stop
-         style="stop-color:#008080;stop-opacity:0;"
-         offset="1"
-         id="stop877" />
-    </linearGradient>
     <linearGradient
        inkscape:collect="always"
        id="linearGradient849">
@@ -50,16 +38,6 @@
        x2="62.486763"
        y2="-24.673655"
        gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient879"
-       id="linearGradient881"
-       x1="427.63126"
-       y1="172.12158"
-       x2="447.94373"
-       y2="60.937454"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(0,-21.166667)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -69,8 +47,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.24748737"
-     inkscape:cx="88.983955"
-     inkscape:cy="261.12317"
+     inkscape:cx="325.63547"
+     inkscape:cy="276.73548"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -133,27 +111,5 @@
        inkscape:transform-center-y="-26.546471"
        transform="rotate(24.043917,97.065985,548.402)"
        inkscape:transform-center-x="-14.124487" />
-    <text
-       xml:space="preserve"
-       style="font-size:81.8444px;line-height:1.25;font-family:sans-serif;fill:#ff00ff;stroke-width:5.11527"
-       x="368.98557"
-       y="113.25739"
-       id="text869"><tspan
-         sodipodi:role="line"
-         id="tspan867"
-         x="368.98557"
-         y="113.25739"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:#ff00ff;stroke-width:5.11527">INGA</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:81.8444px;line-height:1.25;font-family:sans-serif;fill:url(#linearGradient881);fill-opacity:1;stroke-width:5.11527"
-       x="368.98557"
-       y="113.25739"
-       id="text873"><tspan
-         sodipodi:role="line"
-         id="tspan871"
-         x="368.98557"
-         y="113.25739"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi';fill:url(#linearGradient881);fill-opacity:1;stroke-width:5.11527">INGA</tspan></text>
   </g>
 </svg>

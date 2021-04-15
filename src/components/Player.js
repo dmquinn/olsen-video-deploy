@@ -3,10 +3,14 @@ import PlayerControls from "./PlayerControls";
 import PlayerDetails from "./PlayerDetails";
 
 function Player(props) {
+	console.log("props player", props);
+	const [currentSongIndex, setCurrentSongIndex] = useState(
+		props.currentSongIndex
+	);
 	const audioEl = useRef(null);
 	const [isPlaying, setIsPlaying] = useState(false);
-
 	useEffect(() => {
+		setCurrentSongIndex(props.index);
 		if (isPlaying) {
 			audioEl.current.play();
 		} else {
@@ -17,25 +21,25 @@ function Player(props) {
 	const SkipSong = (forwards = true) => {
 		if (forwards) {
 			props.setCurrentSongIndex(() => {
-				let temp = props.currentSongIndex;
-				temp++;
+				let i = props.currentSongIndex;
+				i++;
 
-				if (temp > props.songs.length - 1) {
-					temp = 0;
+				if (i > props.songs.length - 1) {
+					i = 0;
 				}
 
-				return temp;
+				return i;
 			});
 		} else {
 			props.setCurrentSongIndex(() => {
-				let temp = props.currentSongIndex;
-				temp--;
+				let i = props.currentSongIndex;
+				i--;
 
-				if (temp < 0) {
-					temp = props.songs.length - 1;
+				if (i < 0) {
+					i = props.songs.length - 1;
 				}
 
-				return temp;
+				return i;
 			});
 		}
 	};
