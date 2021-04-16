@@ -10,13 +10,22 @@ function App() {
 		setCurrentSongIndex(index || 0);
 		console.log("csi", currentSongIndex);
 	}
-	useEffect(() => {});
+	function handleClick(index) {
+		console.log("index");
+		setCurrentSongIndex(index || 0);
+	}
 	return (
 		<div className="App row row-flex no-gutters">
 			<Sidebar />
 			<div className="mainContainer col-10">
-				<div className="row-w-100">Listen to This</div>
-
+				<div className="Row hotRow">
+					<h1 className="display-1">WHAT'S HOT TODAY?</h1>
+					<p>
+						Sun Sun Pill's new banger <i>Not Not While the Gyro</i>{" "}
+						will brighten your day probably . . .
+					</p>
+					<button onClick={handleClick}>PLAY NOW</button>
+				</div>
 				<div className="library">
 					<div className="row">
 						{songList.map(function (song, index) {

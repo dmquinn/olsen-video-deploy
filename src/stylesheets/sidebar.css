@@ -5,7 +5,12 @@
   height: 100vh;
 }
 
+.bold {
+  font-weight: 900;
+}
+
 .logo {
+  opacity: 90%;
   height: 50px;
   width: 50px;
   -webkit-animation: rotate 4s linear infinite;
