@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-export default function TrackSearchResult({ track, test }) {
+export default function TrackSearchResult({ track, showPlayer }) {
 	function handleClick() {
 		const fullTitle = track.artist + " " + track.title;
-		test(fullTitle);
+		showPlayer(fullTitle);
 	}
 
 	return (

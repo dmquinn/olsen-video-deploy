@@ -1,8 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const lyricsFinder = require("lyrics-finder");
+const connectDB = require("./database.js");
 const SpotifyWebApi = require("spotify-web-api-node");
+
+connectDB();
 
 const app = express();
 app.use(cors());

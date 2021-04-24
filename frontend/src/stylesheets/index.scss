@@ -74,11 +74,18 @@ body {
 	width: 200px;
 	position: relative;
 	top: 20px;
-	// left: 200px;
+	color: white;
 	z-index: 5;
 	border: 1px solid rgb(255, 175, 255);
 	background-color: transparent;
 	border-radius: 20px;
+	transform: 1s;
+
+	&:focus {
+		background-color: rgba(255, 255, 255, 0.137);
+		color: white;
+		transform: 1s;
+	}
 }
 h1 {
 	color: white;

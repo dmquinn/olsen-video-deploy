@@ -14,17 +14,10 @@ export default function Dashboard({ code }) {
 	const accessToken = useAuth(code);
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
-	const [playingTrack, setPlayingTrack] = useState();
 	const [selectedTrack, setSelectedTrack] = useState("");
 	const [screenSize, setScreenSize] = useState("");
 
-	function chooseTrack(track) {
-		setPlayingTrack(track);
-		setSearch("");
-	}
-
 	useEffect(() => {
-		console.log(accessToken);
 		if (!accessToken) return;
 		spotifyApi.setAccessToken(accessToken);
 	}, [accessToken]);
@@ -39,7 +32,6 @@ export default function Dashboard({ code }) {
 				res.body.tracks.items.map((track) => {
 					const smallestAlbumImage = track.album.images.reduce(
 						(smallest, image) => {
-							console.log(image);
 							if (image.height < smallest.height) return image;
 							return smallest;
 						},
@@ -59,8 +51,10 @@ export default function Dashboard({ code }) {
 		return () => (cancel = true);
 	}, [search, accessToken]);
 
-	const test = (value) => {
+	const showPlayer = (value) => {
 		setSelectedTrack(value);
+		document.querySelector(".mainContainer").style.backdropFilter =
+			"brightness(40%)";
 	};
 
 	return (
@@ -90,8 +84,7 @@ export default function Dashboard({ code }) {
 								<TrackSearchResult
 									track={track}
 									key={track.uri}
-									chooseTrack={chooseTrack}
-									test={test}
+									showPlayer={showPlayer}
 								/>
 							))}
 							{searchResults.length === 0 && (
