@@ -3,7 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./database.js");
 const SpotifyWebApi = require("spotify-web-api-node");
-
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 connectDB();
 
 const app = express();

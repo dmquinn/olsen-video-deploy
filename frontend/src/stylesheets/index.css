@@ -175,6 +175,32 @@ h1 {
   border: 12px solid black;
 }
 
+#dropdown {
+  background-color: transparent;
+  border: none;
+}
+
+.dropdown-menu.show {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.dropdown-menu.show:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+.dropdown-menu.show .dropdown-item {
+  color: white;
+}
+
+.dropdownContainer,
+a .dropdown-item {
+  width: 150px;
+  border-bottom: 1px solid white;
+}
+
 @-webkit-keyframes Gradient {
   0% {
     background-position: 83% 0%;

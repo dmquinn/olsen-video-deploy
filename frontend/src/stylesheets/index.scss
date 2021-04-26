@@ -94,7 +94,27 @@ h1 {
 .iframe {
 	border: 12px solid black;
 }
-
+#dropdown {
+	background-color: transparent;
+	border: none;
+}
+.dropdown-menu.show {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	&:focus {
+		border: none !important;
+		outline: none !important;
+	}
+	.dropdown-item {
+		color: white;
+	}
+}
+.dropdownContainer,
+a .dropdown-item {
+	width: 150px;
+	border-bottom: 1px solid white;
+}
 @keyframes Gradient {
 	0% {
 		background-position: 83% 0%;
