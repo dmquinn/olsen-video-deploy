@@ -4,13 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-bootstrap";
 import Logo from "../logo.svg";
 
-function Sidebar() {
+function Sidebar({ setPlaylistVideo }) {
 	const playlist = useSelector((state) => state.playlist);
-	const { playlistItems } = playlist;
 
-	useEffect(() => {
-		console.log("sidebar", playlist);
-	});
 	return (
 		<div className="sidebar">
 			<div className="offset-2">
@@ -28,9 +24,15 @@ function Sidebar() {
 									Nothing To See Here
 								</div>
 							) : (
-								playlist.map((item, id) => (
+								playlist.map((item, i) => (
 									<div className="dropdownContainer">
-										<Dropdown.Item href="#/action-1">
+										<Dropdown.Item
+											key={i}
+											onClick={() =>
+												setPlaylistVideo(playlist[i])
+											}
+											value={item.value}
+										>
 											{item.item}
 										</Dropdown.Item>
 									</div>

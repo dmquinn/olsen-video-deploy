@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function TrackSearchResult({ track, showPlayer }) {
+export default function TrackSearchResult({
+	track,
+	showPlayer,
+	setPlaylistVideo,
+}) {
 	function handleClick() {
+		setPlaylistVideo(null);
 		const fullTitle = track.artist + " " + track.title;
 		showPlayer(fullTitle);
 	}

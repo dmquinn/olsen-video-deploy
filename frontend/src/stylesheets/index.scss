@@ -93,13 +93,23 @@ h1 {
 }
 .iframe {
 	border: 12px solid black;
+	box-shadow: -15px 5px 32px 12px #d945e61c;
 }
 #dropdown {
+	position: relative;
+	z-index: 9999;
+	width: 200px;
 	background-color: transparent;
 	border: none;
 }
+.dropdown.show {
+	width: 100px;
+	background-color: black;
+	overflow: visible;
+}
 .dropdown-menu.show {
-	background-color: transparent;
+	width: 500px;
+	background-color: black !important;
 	border: none;
 	outline: none;
 	&:focus {
@@ -107,7 +117,23 @@ h1 {
 		outline: none !important;
 	}
 	.dropdown-item {
+		position: relative;
+		z-index: 9;
 		color: white;
+		width: 500px;
+		background-color: red;
+	}
+}
+.fa-plus {
+	cursor: pointer;
+	transition: 0.2s;
+
+	&:hover {
+		transform: scale(1.3);
+		transition: 0.2s;
+	}
+	&:active {
+		transform: scale(0.9);
 	}
 }
 .dropdownContainer,

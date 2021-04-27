@@ -28,6 +28,7 @@ app.post("/refresh", (req, res) => {
 				accessToken: data.body.accessToken,
 				expiresIn: data.body.expiresIn,
 			});
+			console.log("data", res.body);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -51,6 +52,7 @@ app.post("/login", (req, res) => {
 				refreshToken: data.body.refresh_token,
 				expiresIn: data.body.expires_in,
 			});
+			console.log(res);
 		})
 		.catch((err) => {
 			res.sendStatus(400);
