@@ -76,7 +76,9 @@ export default function Dashboard({ code }) {
 							placeholder="Search Songs/Artists"
 							value={search}
 							onChange={(e) => setSearch(e.target.value)}
-						/>
+						/>	
+						<i className="fas fa-search"></i>
+
 						{selectedTrack && (
 							<div className="">
 								<VideoPlayer
@@ -105,7 +107,6 @@ export default function Dashboard({ code }) {
 								></div>
 							)}
 						</div>
-						<i className="fas fa-search"></i>
 					</div>
 					<div className="Row hotRow">
 						{!selectedTrack && (
