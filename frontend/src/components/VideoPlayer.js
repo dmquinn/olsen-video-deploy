@@ -10,10 +10,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 	const playlistItems = playlist;
 	const [video, setVideo] = useState("");
 	const [loading, setLoading] = useState(false);
-	const [show, setShow] = useState(false);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
 	const REACT_APP_YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
 	let videoSrc = "";
 	if (playlistVideo) {
@@ -53,28 +50,22 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 
 	return (
 		<>
-			{video && { handleShow }}
-			<Modal show={show}>
-				<div className="player">
-					<iframe
-						src={
-							videoSrc +
-							"?rel=0&amp;controls=1&amp&amp;showinfo=0&amp;modestbranding=1&controls=0&autoplay=1&modestbranding=1"
-						}
-						allowFullScreen
-						allowautoplay="1"
-						title="Video player"
-						className="iframe"
-					/>
-					<p className="ml-4">
-						Add to playlist{" "}
-						<i
-							className="ml-3 fas fa-plus"
-							onClick={handleClick}
-						></i>
-					</p>
-				</div>
-			</Modal>
+			<div className="player">
+				<iframe
+					src={
+						videoSrc +
+						"?rel=0&amp;controls=1&amp&amp;showinfo=0&amp;modestbranding=1&controls=0&autoplay=1&modestbranding=1"
+					}
+					allowFullScreen
+					allowautoplay="1"
+					title="Video player"
+					className="iframe"
+				/>
+				<p className="ml-4">
+					Add to playlist{" "}
+					<i className="ml-3 fas fa-plus" onClick={handleClick}></i>
+				</p>
+			</div>
 		</>
 	);
 }

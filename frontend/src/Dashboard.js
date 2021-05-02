@@ -10,7 +10,7 @@ const spotifyApi = new SpotifyWebApi({
 	clientId: "d9eef23f8ad74b80b1e7535609cfc4cf",
 });
 
-export default function Dashboard({ code }) {
+export default function Dashboard({ code, userName }) {
 	const accessToken = useAuth(code);
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
@@ -19,9 +19,20 @@ export default function Dashboard({ code }) {
 	const [playlistVideo, setPlaylistVideo] = useState("");
 
 	useEffect(() => {
+		console.log("userName", userName);
 		if (!accessToken) return;
 		spotifyApi.setAccessToken(accessToken);
-	}, [accessToken]);
+		console.log(accessToken);
+		spotifyApi.getMe().then(
+			function (data) {
+				const userName = data.body.display_name;
+				return userName;
+			},
+			function (err) {
+				console.log("Something went wrong!", err);
+			}
+		);
+	}, [accessToken, userName]);
 
 	useEffect(() => {
 		if (!search) return setSearchResults([]);
@@ -70,13 +81,14 @@ export default function Dashboard({ code }) {
 
 			<div className="App row row-flex no-gutters">
 				<div className="mainContainer col-10">
+					<h1>USERNAME IS{userName}</h1>
 					<div className="searchBar">
 						<Form.Control
 							type="search"
 							placeholder="Search Songs/Artists"
 							value={search}
 							onChange={(e) => setSearch(e.target.value)}
-						/>	
+						/>
 						<i className="fas fa-search"></i>
 
 						{selectedTrack && (

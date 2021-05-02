@@ -4,6 +4,8 @@ const cors = require("cors");
 const connectDB = require("./database.js");
 const SpotifyWebApi = require("spotify-web-api-node");
 const path = require("path");
+const axios = require("axios");
+
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 connectDB();
 
@@ -28,7 +30,6 @@ app.post("/refresh", (req, res) => {
 				accessToken: data.body.accessToken,
 				expiresIn: data.body.expiresIn,
 			});
-			console.log("data", res.body);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -52,20 +53,24 @@ app.post("/login", (req, res) => {
 				refreshToken: data.body.refresh_token,
 				expiresIn: data.body.expires_in,
 			});
-			console.log(res);
 		})
 		.catch((err) => {
 			res.sendStatus(400);
 		});
-});
-
-app.get("/lyrics", async (req, res) => {
-	const lyrics =
-		(await lyricsFinder(req.query.artist, req.query.track)) ||
-		"No Lyrics Found";
-	res.json({ lyrics });
+	spotifyApi.setAccessToken(process.env.REACT_APP_ACCESS_TOKEN);
+	spotifyApi.getMe().then(
+		function (data) {
+			const userName = data.body.display_name;
+			console.log(userName);
+		},
+		function (err) {
+			console.log("Something went wrong!", err);
+		}
+	);
 });
 
 app.listen(3001, () => {
-	console.log("listening on por 3001");
+	console.log("listening on port 3001");
 });
+
+// module.exports = userName;
