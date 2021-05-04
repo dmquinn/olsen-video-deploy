@@ -1,45 +1,45 @@
 .sidebar {
-	position: fixed;
-	width: 200px;
-	background-color: black;
-	height: 100vh;
+  position: fixed;
+  width: 200px;
+  background-color: black;
+  height: 100vh;
 }
 
 .bold {
-	font-weight: 900;
+  font-weight: 900;
 }
 
 .logo {
-	position: absolute;
-	top: 50px;
-	opacity: 90%;
-	height: 50px;
-	width: 50px;
-	-webkit-animation: rotate 4s linear infinite;
-	animation: rotate 4s linear infinite;
-	-webkit-filter: drop-shadow(5px 5px 15px rgba(245, 9, 205, 0.432));
-	filter: drop-shadow(5px 5px 15px rgba(245, 9, 205, 0.432));
+  position: absolute;
+  top: 50px;
+  opacity: 90%;
+  height: 50px;
+  width: 50px;
+  -webkit-animation: rotate 4s linear infinite;
+          animation: rotate 4s linear infinite;
+  -webkit-filter: drop-shadow(5px 5px 15px rgba(245, 9, 205, 0.432));
+          filter: drop-shadow(5px 5px 15px rgba(245, 9, 205, 0.432));
 }
 
 @-webkit-keyframes rotate {
-	0% {
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 @keyframes rotate {
-	0% {
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 /*# sourceMappingURL=sidebar.css.map */

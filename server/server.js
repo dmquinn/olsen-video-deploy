@@ -57,16 +57,7 @@ app.post("/login", (req, res) => {
 		.catch((err) => {
 			res.sendStatus(400);
 		});
-	spotifyApi.setAccessToken(process.env.REACT_APP_ACCESS_TOKEN);
-	spotifyApi.getMe().then(
-		function (data) {
-			const userName = data.body.display_name;
-			console.log(userName);
-		},
-		function (err) {
-			console.log("Something went wrong!", err);
-		}
-	);
+	spotifyApi.setAccessToken(code);
 });
 
 app.listen(3001, () => {

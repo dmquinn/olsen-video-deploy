@@ -7,5 +7,7 @@
 .player .iframe {
   height: 500px;
   width: 500px;
+  resize: both;
+  overflow: auto;
 }
 /*# sourceMappingURL=player.css.map */

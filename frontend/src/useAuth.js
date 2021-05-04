@@ -6,12 +6,14 @@ export default function useAuth(code) {
 	const [accessToken, setAccessToken] = useState();
 	const [refreshToken, setRefreshToken] = useState();
 	const [expiresIn, setExpiresIn] = useState();
+
 	const spotifyApi = new SpotifyWebApi({
 		redirectUri: process.env.REACT_APP_REDIRECT_URI,
 		clientId: process.env.REACT_APP_CLIENT_ID,
 		clientSecret: process.env.REACT_APP_CLIENT_SECRET,
 		refreshToken,
 	});
+
 	useEffect(() => {
 		axios
 			.post("http://localhost:3001/login", {
@@ -22,6 +24,7 @@ export default function useAuth(code) {
 				setRefreshToken(res.data.refreshToken);
 				setExpiresIn(res.data.expiresIn);
 				window.history.pushState({}, null, "/");
+				console.log();
 			})
 			.catch(() => {
 				window.location = "/";
@@ -47,16 +50,5 @@ export default function useAuth(code) {
 		return () => clearInterval(interval);
 	}, [refreshToken, expiresIn]);
 
-	useEffect(() => {
-		spotifyApi.getMe().then(
-			function (data) {
-				const userName = data.body.display_name;
-				return userName;
-			},
-			function (err) {
-				console.log("Something went wrong!", err);
-			}
-		);
-	});
 	return accessToken;
 }

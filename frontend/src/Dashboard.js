@@ -10,28 +10,30 @@ const spotifyApi = new SpotifyWebApi({
 	clientId: "d9eef23f8ad74b80b1e7535609cfc4cf",
 });
 
-export default function Dashboard({ code, userName }) {
+export default function Dashboard({ code }) {
 	const accessToken = useAuth(code);
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [selectedTrack, setSelectedTrack] = useState("");
 	const [selectPlaylist, setSelectPlaylist] = useState("");
 	const [playlistVideo, setPlaylistVideo] = useState("");
+	const [userName, setUserName] = useState("");
+	const [userId, setUserId] = useState("");
 
 	useEffect(() => {
-		console.log("userName", userName);
 		if (!accessToken) return;
 		spotifyApi.setAccessToken(accessToken);
-		console.log(accessToken);
 		spotifyApi.getMe().then(
 			function (data) {
-				const userName = data.body.display_name;
-				return userName;
+				console.log("this", data.body);
+				setUserName(data.body.display_name);
+				setUserId(data.body.id);
 			},
 			function (err) {
 				console.log("Something went wrong!", err);
 			}
 		);
+		console.log(accessToken);
 	}, [accessToken, userName]);
 
 	useEffect(() => {
@@ -81,7 +83,7 @@ export default function Dashboard({ code, userName }) {
 
 			<div className="App row row-flex no-gutters">
 				<div className="mainContainer col-10">
-					<h1>USERNAME IS{userName}</h1>
+					<h3 className="offset-4">{userName}</h3>
 					<div className="searchBar">
 						<Form.Control
 							type="search"

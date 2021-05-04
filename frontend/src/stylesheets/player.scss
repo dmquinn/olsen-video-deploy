@@ -5,5 +5,7 @@
 	.iframe {
 		height: 500px;
 		width: 500px;
+		resize: both;
+		overflow: auto;
 	}
 }
