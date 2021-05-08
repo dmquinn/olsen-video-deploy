@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const playlistSchema = mongoose.Schema({
+	createdBy: {
+		type: String,
+	},
 	playlistNumber: {
 		type: Number,
 	},

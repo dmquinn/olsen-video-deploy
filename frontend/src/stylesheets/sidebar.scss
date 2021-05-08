@@ -3,6 +3,9 @@
 	width: 200px;
 	background-color: black;
 	height: 100vh;
+	&.expand {
+		width: 0px;
+	}
 }
 .bold {
 	font-weight: 900;

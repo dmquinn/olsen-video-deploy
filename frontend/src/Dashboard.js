@@ -91,7 +91,6 @@ export default function Dashboard({ code }) {
 							value={search}
 							onChange={(e) => setSearch(e.target.value)}
 						/>
-						<i className="fas fa-search"></i>
 
 						{selectedTrack && (
 							<div className="">

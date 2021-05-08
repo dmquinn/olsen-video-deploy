@@ -10,6 +10,7 @@ const addPlaylistItem = async (req, res) => {
 	} else {
 		const playlist = new Playlist({
 			playlistItems,
+			createdBy,
 		});
 
 		const createdPlaylist = await playlist.save();

@@ -5,6 +5,10 @@
   height: 100vh;
 }
 
+.sidebar.expand {
+  width: 0px;
+}
+
 .bold {
   font-weight: 900;
 }
