@@ -6,19 +6,6 @@ import Logo from "../logo.svg";
 
 function Sidebar({ setPlaylistVideo }) {
 	const playlist = useSelector((state) => state.playlist);
-	const [visible, setVisible] = useState(true);
-
-	const showSidebar = () => {
-		const sider = document.querySelector(".sidebar");
-		if (window.innerWidth <= 960) {
-			sider.classList.add("expand");
-			console.log(sider.className);
-		} else {
-			sider.classList.remove("expand");
-		}
-	};
-
-	window.addEventListener("resize", showSidebar);
 
 	return (
 		<div className="sidebar">

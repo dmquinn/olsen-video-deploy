@@ -3,9 +3,6 @@
 	width: 200px;
 	background-color: black;
 	height: 100vh;
-	&.expand {
-		width: 0px;
-	}
 }
 .bold {
 	font-weight: 900;
@@ -27,9 +24,10 @@
 		transform: rotate(360deg);
 	}
 }
-// @media all and (max-width: 768px) {
-// 	.sidebar,
-// 	.offset-2 {
-// 		visibility: hidden;
-// 	}
-// }
+@media all and (max-width: 768px) {
+	.sidebar,
+	.offset-2 {
+		visibility: hidden;
+		width: 0px;
+	}
+}

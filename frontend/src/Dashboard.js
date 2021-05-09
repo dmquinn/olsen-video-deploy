@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useAuth from "./useAuth";
 import { Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
-import Sidebar from "./components/Sidebar";
+import TSidebar from "./components/Sidebar";
 import TrackSearchResult from "./components/TrackSearch";
 import VideoPlayer from "./components/VideoPlayer";
 
@@ -76,13 +76,12 @@ export default function Dashboard({ code }) {
 	};
 	return (
 		<>
-			<Sidebar
+			<TSidebar
 				setPlaylistVideo={setPlaylistVideo}
 				selectedPlaylist={selectPlaylist}
 			/>
-
 			<div className="App row row-flex no-gutters">
-				<div className="mainContainer col-10">
+				<div className="mainContainer col-lg-10 col-sm-12 mr-sm-5">
 					<h3 className="offset-4">{userName}</h3>
 					<div className="searchBar">
 						<Form.Control

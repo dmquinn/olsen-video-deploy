@@ -22,7 +22,9 @@
 	},
 	"homepage": "https://github.com/dmquinn/spotify-clone-maybe#readme",
 	"dependencies": {
+		"cdbreact": "^1.1.0",
 		"concurrently": "^6.0.2",
-		"dotenv": "^8.2.0"
+		"dotenv": "^8.2.0",
+		"react-pro-sidebar": "^0.6.0"
 	}
 }
