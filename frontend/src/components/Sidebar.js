@@ -40,6 +40,33 @@ function Sidebar({ setPlaylistVideo }) {
 							)}
 						</Dropdown.Menu>
 					</Dropdown>
+					<Dropdown>
+						<Dropdown.Toggle id="dropdown">
+							Playlist Two
+						</Dropdown.Toggle>
+
+						<Dropdown.Menu>
+							{playlist.length === 0 ? (
+								<div className="dropdownContainer">
+									Nothing To See Here
+								</div>
+							) : (
+								playlist.map((item, i) => (
+									<div className="dropdownContainer">
+										<Dropdown.Item
+											key={i}
+											onClick={() =>
+												setPlaylistVideo(playlist[i])
+											}
+											value={item.value}
+										>
+											{item.item}
+										</Dropdown.Item>
+									</div>
+								))
+							)}
+						</Dropdown.Menu>
+					</Dropdown>
 				</div>
 			</div>
 		</div>

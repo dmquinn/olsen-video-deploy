@@ -50,7 +50,8 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 
 	return (
 		<>
-			<div className="player">
+			<div className="player flex-row">
+				<button>x</button>
 				<iframe
 					src={
 						videoSrc +
