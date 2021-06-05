@@ -9,6 +9,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 	const playlist = useSelector((state) => state.playlist);
 	const playlistItems = playlist;
 	const [video, setVideo] = useState("");
+	const [openPlayer, setOpenPlayer] = useState(true);
 	const [loading, setLoading] = useState(false);
 
 	const REACT_APP_YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
@@ -31,6 +32,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 
 		console.log("dispatch", dispatch);
 	}
+	function handleClose() {}
 
 	useEffect(() => {
 		axios
@@ -50,23 +52,28 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 
 	return (
 		<>
-			<div className="player flex-row">
-				<button>x</button>
-				<iframe
-					src={
-						videoSrc +
-						"?rel=0&amp;controls=1&amp&amp;showinfo=0&amp;modestbranding=1&controls=0&autoplay=1&modestbranding=1"
-					}
-					allowFullScreen
-					allowautoplay="1"
-					title="Video player"
-					className="iframe"
-				/>
-				<p className="ml-4">
-					Add to playlist{" "}
-					<i className="ml-3 fas fa-plus" onClick={handleClick}></i>
-				</p>
-			</div>
+			<button onClick={setOpenPlayer(false)}>x</button>
+			{openPlayer && (
+				<div className="player flex-row">
+					<iframe
+						src={
+							videoSrc +
+							"?rel=0&amp;controls=1&amp&amp;showinfo=0&amp;modestbranding=1&controls=0&autoplay=1&modestbranding=1"
+						}
+						allowFullScreen
+						allowautoplay="1"
+						title="Video player"
+						className="iframe"
+					/>
+					<p className="ml-4">
+						Add to playlist{" "}
+						<i
+							className="ml-3 fas fa-plus"
+							onClick={handleClick}
+						></i>
+					</p>
+				</div>
+			)}
 		</>
 	);
 }

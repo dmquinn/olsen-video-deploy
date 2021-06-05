@@ -12,7 +12,7 @@ function Sidebar({ setPlaylistVideo }) {
 			<div className="offset-2">
 				<img className="logo" src={Logo} alt=""></img>
 				<div className="mt-5">
-					<h5>PLAYLISTS</h5>
+					<h5>MY PLAYLISTS</h5>
 					<Dropdown>
 						<Dropdown.Toggle id="dropdown">
 							Playlist One

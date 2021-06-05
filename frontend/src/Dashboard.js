@@ -65,6 +65,9 @@ export default function Dashboard({ code }) {
 		return () => (cancel = true);
 	}, [search, accessToken]);
 
+	const handleClick = () => {
+		setSelectedTrack("angel olsen shut up kiss me");
+	};
 	const showPlayer = (value) => {
 		setSelectedTrack(value);
 		document.querySelector(".mainContainer").style.backdropFilter =
@@ -125,11 +128,15 @@ export default function Dashboard({ code }) {
 							<>
 								<h1 className="display-1">WHAT'S HOT TODAY?</h1>
 								<p>
-									Sun Sun Pill's new banger{" "}
-									<i>Not Not While the Gyro</i> will brighten
-									your day probably . . .
+									Angel Olsen's banger <i>Shut Up Kiss Me</i>{" "}
+									will brighten your day probably . . .
 								</p>
-								<button className="button">PLAY NOW</button>
+								<button
+									className="button"
+									onClick={handleClick}
+								>
+									PLAY NOW
+								</button>
 							</>
 						)}
 					</div>
