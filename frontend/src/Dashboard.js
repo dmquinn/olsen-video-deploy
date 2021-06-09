@@ -70,8 +70,9 @@ export default function Dashboard({ code }) {
 	};
 	const showPlayer = (value) => {
 		setSelectedTrack(value);
-		document.querySelector(".mainContainer").style.backdropFilter =
-			"brightness(40%)";
+	};
+	const handleCloseTest = () => {
+		setSelectedTrack("");
 	};
 	const selectFromPlaylist = (video) => {
 		setSelectedTrack(video);
@@ -85,7 +86,7 @@ export default function Dashboard({ code }) {
 			/>
 			<div className="App row row-flex no-gutters">
 				<div className="mainContainer col-lg-10 col-sm-12 mr-sm-5">
-					<h5 className="offset-5">{userName}</h5>
+					<h3 className="offset-4">{userName}</h3>
 					<div className="searchBar">
 						<Form.Control
 							type="search"
@@ -95,12 +96,20 @@ export default function Dashboard({ code }) {
 						/>
 
 						{selectedTrack && (
-							<div className="">
-								<VideoPlayer
-									selectedTrack={selectedTrack}
-									playlistVideo={playlistVideo}
-								/>
-							</div>
+							<>
+								<p
+									className="closeButton"
+									onClick={handleCloseTest}
+								>
+									x
+								</p>
+								<div className="">
+									<VideoPlayer
+										selectedTrack={selectedTrack}
+										playlistVideo={playlistVideo}
+									/>
+								</div>
+							</>
 						)}
 
 						<div
