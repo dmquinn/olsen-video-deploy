@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal } from "react-bootstrap";
-
+import "../stylesheets/player.css";
 import axios from "axios";
 
 function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
@@ -32,7 +31,9 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 
 		console.log("dispatch", dispatch);
 	}
-	function handleClose() {}
+	function handleClose() {
+		setOpenPlayer(false);
+	}
 
 	useEffect(() => {
 		axios
@@ -52,27 +53,31 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 
 	return (
 		<>
-			<button onClick={setOpenPlayer(false)}>x</button>
 			{openPlayer && (
-				<div className="player flex-row">
-					<iframe
-						src={
-							videoSrc +
-							"?rel=0&amp;controls=1&amp&amp;showinfo=0&amp;modestbranding=1&controls=0&autoplay=1&modestbranding=1"
-						}
-						allowFullScreen
-						allowautoplay="1"
-						title="Video player"
-						className="iframe"
-					/>
-					<p className="ml-4">
-						Add to playlist{" "}
-						<i
-							className="ml-3 fas fa-plus"
-							onClick={handleClick}
-						></i>
-					</p>
-				</div>
+				<>
+					<div className="player flex-row">
+						<p className="closeButton" onClick={handleClose}>
+							x
+						</p>
+						<iframe
+							src={
+								videoSrc +
+								"?rel=0&amp;controls=1&amp&amp;showinfo=0&amp;modestbranding=1&controls=0&autoplay=1&modestbranding=1"
+							}
+							allowFullScreen
+							allowautoplay="1"
+							title="Video player"
+							className="iframe"
+						/>
+						<p className="ml-4">
+							Add to playlist{" "}
+							<i
+								className="ml-3 fas fa-plus"
+								onClick={handleClick}
+							></i>
+						</p>
+					</div>
+				</>
 			)}
 		</>
 	);

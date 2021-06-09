@@ -85,7 +85,7 @@ export default function Dashboard({ code }) {
 			/>
 			<div className="App row row-flex no-gutters">
 				<div className="mainContainer col-lg-10 col-sm-12 mr-sm-5">
-					<h3 className="offset-4">{userName}</h3>
+					<h5 className="offset-5">{userName}</h5>
 					<div className="searchBar">
 						<Form.Control
 							type="search"

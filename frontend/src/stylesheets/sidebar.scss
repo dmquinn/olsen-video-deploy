@@ -9,11 +9,11 @@
 }
 .logo {
 	position: absolute;
-	top: --50px;
+	top: -50px;
 	opacity: 90%;
 	height: 50px;
 	width: 50px;
-	animation: rotate 4s linear infinite;
+	animation: rotate 1s linear infinite;
 	filter: drop-shadow(5px 5px 15px rgba(245, 9, 205, 0.432));
 }
 @keyframes rotate {

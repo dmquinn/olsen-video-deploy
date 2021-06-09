@@ -1,11 +1,27 @@
 .player {
 	position: absolute;
-	top: 70px;
+	top: 60px;
 	right: 10px;
 	.iframe {
 		height: 500px;
 		width: 500px;
 		resize: both;
 		overflow: auto;
+	}
+}
+.closeButton {
+	font-size: 22px;
+	background-color: rgba(255, 255, 255, 0.308);
+	width: 65px;
+	border-radius: 25px;
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid rgba(255, 255, 255, 0);
+	transition: 0.3s;
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0);
+		border: 1px solid white;
+		transition: 0.3s;
 	}
 }
