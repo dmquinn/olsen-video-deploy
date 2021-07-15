@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useAuth from "./useAuth";
 import { Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "./components/TrackSearch";
 import VideoPlayer from "./components/VideoPlayer";
+import Playlist from "./components/Playlist";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: "d9eef23f8ad74b80b1e7535609cfc4cf",
@@ -18,6 +19,9 @@ export default function Dashboard({ code }) {
 	const [playlistVideo, setPlaylistVideo] = useState("");
 	const [userName, setUserName] = useState("");
 	const [userId, setUserId] = useState("");
+	const [isActive, setIsActive] = useState(false);
+
+	const dropdownRef = useRef(null);
 
 	useEffect(() => {
 		if (!accessToken) return;
@@ -61,7 +65,10 @@ export default function Dashboard({ code }) {
 
 		return () => (cancel = true);
 	}, [search, accessToken]);
-
+	const handleDropdown = () => setIsActive(!isActive);
+	const handleChange = (e) => {
+		setSearch(e.target.value);
+	};
 	const handleClick = () => {
 		setSelectedTrack("angel olsen shut up kiss me");
 	};
@@ -76,52 +83,83 @@ export default function Dashboard({ code }) {
 	};
 	return (
 		<>
-			<div className="mainContainer p-5 row">
-				<h6>{userName}</h6>
+			<div
+				ref={dropdownRef}
+				className={`playlistContainer ${
+					isActive ? "active" : "inactive"
+				}`}
+			>
+				<Playlist isActive={isActive} />
+			</div>
+			<div className="row w-100">
+				<p
+					className="ml-5 mt-2"
+					style={{ letterSpacing: "1.9px", color: "grey" }}
+				>
+					<i className="fas fa-user"> </i> {userName}
+				</p>
+				<div className="offset-2 playlistsTab" onClick={handleDropdown}>
+					PLAYLISTS{" "}
+					<i
+						ref={dropdownRef}
+						className={` ${
+							isActive ? "fas fa-arrow-up" : "fas fa-arrow-down"
+						}`}
+						style={{ color: "black" }}
+					>
+						{" "}
+					</i>
+				</div>
+			</div>
+			<div className="p-5">
 				{/* <img
 						src="https://img.youtube.com/vi/nleRCBhLr3k/0.jpg
 "
 					></img> */}
 				<div className="">
-					<div className="searchBar">
+					<div className="searchBar mr-auto">
 						<Form.Control
 							type="search"
 							placeholder="Search Songs/Artists"
 							value={search}
-							onChange={(e) => setSearch(e.target.value)}
+							onChange={handleChange}
 							showPlayer={showPlayer}
 						/>
 					</div>
-					{selectedTrack && (
-						<div className="d-flex justify-content-center align-items-center">
-							<p
-								className="closeButton button"
-								onClick={handleCloseTest}
-							>
-								CLOSE VIDEO
-							</p>
-							<div className="col-lg-6">
-								<VideoPlayer
-									selectedTrack={selectedTrack}
-									playlistVideo={playlistVideo}
-								/>
-							</div>
-						</div>
-					)}
 
-					<div className="mt-4 searchResults col-lg-6">
-						{searchResults.map((track, id) => (
-							<TrackSearchResult
-								track={track}
-								key={track.uri}
-								showPlayer={showPlayer}
-								setPlaylistVideo={setPlaylistVideo}
-							/>
-						))}
+					<div className="row">
+						<div className="mt-4 searchResults col-lg-6">
+							{searchResults.map((track, id) => (
+								<TrackSearchResult
+									track={track}
+									key={track.uri}
+									showPlayer={showPlayer}
+									setPlaylistVideo={setPlaylistVideo}
+									setSelectedTrack={setSelectedTrack}
+								/>
+							))}
+						</div>
+						{selectedTrack && (
+							<>
+								<p
+									className="closeButton button"
+									onClick={handleCloseTest}
+								>
+									CLOSE VIDEO
+								</p>
+								{searchResults && (
+									<div className="col-lg-6 ">
+										<VideoPlayer
+											selectedTrack={selectedTrack}
+											playlistVideo={playlistVideo}
+										/>
+									</div>
+								)}
+							</>
+						)}
 					</div>
 				</div>
 
-				{/* // */}
 				<div className="Row hotRow">
 					{!selectedTrack && (
 						<>

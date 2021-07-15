@@ -19,15 +19,25 @@ body {
 }
 
 .button,
+.dropdown-toggle,
 h4 {
 	background-color: white;
 	color: black !important;
 	font-weight: 600;
 	border: none;
 	padding: 10px;
+	font-family: "Bebas Neue", cursive;
+
 	&:hover {
 		text-decoration: none;
 	}
+}
+.dropdown-toggle:hover,
+.dropdown-toggle:focus,
+.dropdown-toggle:active {
+	background-color: white !important;
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 .form-control {

@@ -4,16 +4,11 @@ export default function TrackSearchResult({
 	track,
 	showPlayer,
 	setPlaylistVideo,
-	selectedTrack,
 }) {
-	useEffect(() => {
-		console.log("value", selectedTrack);
-	});
 	function handleClick() {
 		setPlaylistVideo(null);
 		const fullTitle = track.artist + " " + track.title;
 		showPlayer(fullTitle);
-		// value = "";
 	}
 
 	return (

@@ -1,0 +1,37 @@
+.playlistContainer {
+  background-color: white;
+  height: 0px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.playlistContainer.active {
+  height: 380px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.playlistImage {
+  width: 450px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding: 20px;
+}
+
+.playlistsTab {
+  padding: 10px;
+  background-color: white;
+  color: black;
+  font-family: "Bebas Neue", cursive;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .playlistImage {
+    padding: 0;
+    height: 300px;
+  }
+}
+/*# sourceMappingURL=playlist.css.map */
