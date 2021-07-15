@@ -19,7 +19,6 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 	}
 
 	function handleClick() {
-		console.log("line 17", selectedTrack);
 		dispatch({
 			type: "ADD_PLAYLIST_ITEM",
 			payload: {
@@ -37,9 +36,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 				`https://www.googleapis.com/youtube/v3/search/?key=${REACT_APP_YOUTUBE_API}&part=snippet&q=youtu.be/${selectedTrack}`
 			)
 			.then((response) => {
-				console.log("response", response);
 				setVideo(response.data.items[0].id.videoId);
-				console.log(video);
 			})
 			.catch((err) => {
 				setLoading(true);
@@ -50,7 +47,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 	return (
 		<>
 			<>
-				<div className="player flex-row">
+				<div className="player">
 					<iframe
 						src={
 							videoSrc +
@@ -61,7 +58,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 						title="Video player"
 						className="iframe"
 					/>
-					<p className="ml-4">
+					<p className="">
 						Add to playlist{" "}
 						<i
 							className="ml-3 fas fa-plus"

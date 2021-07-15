@@ -10,7 +10,7 @@ export default function Login() {
 			style={{ minHeight: "100vh" }}
 		>
 			<a href={AUTH_URL} className="button">
-				Let's Start!
+				<h4>LET'S START!</h4>
 			</a>
 		</div>
 	);

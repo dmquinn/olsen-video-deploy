@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import useAuth from "./useAuth";
 import { Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
-import TSidebar from "./components/Sidebar";
 import TrackSearchResult from "./components/TrackSearch";
 import VideoPlayer from "./components/VideoPlayer";
 
@@ -25,7 +24,6 @@ export default function Dashboard({ code }) {
 		spotifyApi.setAccessToken(accessToken);
 		spotifyApi.getMe().then(
 			function (data) {
-				console.log("this", data.body);
 				setUserName(data.body.display_name);
 				setUserId(data.body.id);
 			},
@@ -33,7 +31,6 @@ export default function Dashboard({ code }) {
 				console.log("Something went wrong!", err);
 			}
 		);
-		console.log(accessToken);
 	}, [accessToken, userName]);
 
 	useEffect(() => {
@@ -43,7 +40,7 @@ export default function Dashboard({ code }) {
 		spotifyApi.searchTracks(search).then((res) => {
 			if (cancel) return;
 			setSearchResults(
-				res.body.tracks.items.map((track) => {
+				res.body.tracks.items.map((track, id) => {
 					const smallestAlbumImage = track.album.images.reduce(
 						(smallest, image) => {
 							if (image.height < smallest.height) return image;
@@ -76,79 +73,68 @@ export default function Dashboard({ code }) {
 	};
 	const selectFromPlaylist = (video) => {
 		setSelectedTrack(video);
-		console.log("61", video);
 	};
 	return (
 		<>
-			<TSidebar
-				setPlaylistVideo={setPlaylistVideo}
-				selectedPlaylist={selectPlaylist}
-			/>
-			<div className="App row row-flex no-gutters">
-				<div className="mainContainer col-lg-10 col-sm-12 mr-sm-5">
-					<h3 className="offset-4">{userName}</h3>
+			<div className="mainContainer p-5 row">
+				<h6>{userName}</h6>
+				{/* <img
+						src="https://img.youtube.com/vi/nleRCBhLr3k/0.jpg
+"
+					></img> */}
+				<div className="">
 					<div className="searchBar">
 						<Form.Control
 							type="search"
 							placeholder="Search Songs/Artists"
 							value={search}
 							onChange={(e) => setSearch(e.target.value)}
+							showPlayer={showPlayer}
 						/>
-
-						{selectedTrack && (
-							<>
-								<p
-									className="closeButton"
-									onClick={handleCloseTest}
-								>
-									x
-								</p>
-								<div className="">
-									<VideoPlayer
-										selectedTrack={selectedTrack}
-										playlistVideo={playlistVideo}
-									/>
-								</div>
-							</>
-						)}
-
-						<div
-							className="flex-grow-1 mt-5 searchResults col-lg-6"
-							style={{ overflowY: "auto" }}
-						>
-							{searchResults.map((track, id) => (
-								<TrackSearchResult
-									track={track}
-									key={track.uri}
-									showPlayer={showPlayer}
-									setPlaylistVideo={setPlaylistVideo}
+					</div>
+					{selectedTrack && (
+						<div className="d-flex justify-content-center align-items-center">
+							<p
+								className="closeButton button"
+								onClick={handleCloseTest}
+							>
+								CLOSE VIDEO
+							</p>
+							<div className="col-lg-6">
+								<VideoPlayer
+									selectedTrack={selectedTrack}
+									playlistVideo={playlistVideo}
 								/>
-							))}
-							{searchResults.length === 0 && (
-								<div
-									className="text-center"
-									style={{ whiteSpace: "pre" }}
-								></div>
-							)}
+							</div>
 						</div>
+					)}
+
+					<div className="mt-4 searchResults col-lg-6">
+						{searchResults.map((track, id) => (
+							<TrackSearchResult
+								track={track}
+								key={track.uri}
+								showPlayer={showPlayer}
+								setPlaylistVideo={setPlaylistVideo}
+							/>
+						))}
 					</div>
-					<div className="Row hotRow">
-						{!selectedTrack && (
-							<>
-								<h1 className="display-1">WHAT'S HOT TODAY?</h1>
-								<p>
-									Angel Olsen's banger <i>Shut Up Kiss Me</i>{" "}
-									will brighten your day probably . . .
-								</p>
-								<button
-									className="button"
-									onClick={handleClick}
-								>
-									PLAY NOW
-								</button>
-							</>
-						)}
-					</div>
+				</div>
+
+				{/* // */}
+				<div className="Row hotRow">
+					{!selectedTrack && (
+						<>
+							<p className="hotTitle">WHAT'S HOT TODAY?</p>
+							<p>
+								Angel Olsen's banger <i>Shut Up Kiss Me</i> will
+								brighten your day probably . . .
+							</p>
+							<button className="button" onClick={handleClick}>
+								PLAY NOW
+							</button>
+						</>
+					)}
 				</div>
 			</div>
 		</>
