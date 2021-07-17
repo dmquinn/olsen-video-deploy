@@ -23,12 +23,13 @@
 	},
 	"homepage": "https://github.com/dmquinn/spotify-clone-maybe#readme",
 	"dependencies": {
-		"mongoose": "^5.13.3",
+		"body-parser": "*",
 		"cdbreact": "^1.1.0",
 		"concurrently": "^6.0.2",
+		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
-		"react-pro-sidebar": "^0.6.0",
 		"express": "*",
-		"body-parser": "*"
+		"mongoose": "^5.13.3",
+		"react-pro-sidebar": "^0.6.0"
 	}
 }
