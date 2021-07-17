@@ -36,6 +36,17 @@ app.post("/refresh", (req, res) => {
 			res.sendStatus(400);
 		});
 });
+if ((process.env.NODE_ENV = "production")) {
+	app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+	app.get("*", (req, res) =>
+		res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+	);
+} else {
+	app.get("/", (req, res) => {
+		res.send("API is running....");
+	});
+}
 
 app.post("/login", (req, res) => {
 	const code = req.body.code;
@@ -60,8 +71,8 @@ app.post("/login", (req, res) => {
 	spotifyApi.setAccessToken(code);
 });
 
-app.listen(3001, () => {
-	console.log("listening on port 3001");
-});
-
-// module.exports = userName;
+const PORT = process.env.PORT || 5000;
+app.listen(
+	PORT,
+	console.log(`server running in ${process.env.NODE_ENV} on port ${PORT}`)
+);
