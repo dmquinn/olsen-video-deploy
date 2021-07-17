@@ -23,6 +23,7 @@
 	},
 	"homepage": "https://github.com/dmquinn/spotify-clone-maybe#readme",
 	"dependencies": {
+		"axios": "^0.21.1",
 		"body-parser": "*",
 		"cdbreact": "^1.1.0",
 		"concurrently": "^6.0.2",
