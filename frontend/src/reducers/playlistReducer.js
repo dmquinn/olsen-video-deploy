@@ -6,6 +6,7 @@ const playlistReducer = (state = { playlist: [] }, action) => {
 				...state,
 				playlist: [...state.playlist, action.payload],
 			};
+
 		case "DELETE_PLAYLIST_ITEM":
 			return {
 				...state,

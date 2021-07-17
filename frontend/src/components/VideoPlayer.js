@@ -20,7 +20,8 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 		videoSrc = `https://www.youtube.com/embed/${video}`;
 	}
 
-	function handleClick() {
+	const handleClick = () => {
+		console.log("line 17", selectedTrack);
 		dispatch({
 			type: "ADD_PLAYLIST_ITEM",
 			payload: {
@@ -30,7 +31,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 		});
 
 		console.log("dispatch", dispatch);
-	}
+	};
 
 	useEffect(() => {
 		axios
@@ -58,20 +59,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 				title="Video player"
 				className="iframe"
 			/>
-			<Dropdown>
-				<Dropdown.Toggle variant="success" id="dropdown-basic">
-					Add to Playlist{" "}
-				</Dropdown.Toggle>
 
-				<Dropdown.Menu>
-					<Dropdown.Item href="#/action-2">
-						Playlist One
-					</Dropdown.Item>
-					<Dropdown.Item href="#/action-3">
-						Playlist Two{" "}
-					</Dropdown.Item>
-				</Dropdown.Menu>
-			</Dropdown>
 			<p className="">
 				Add to playlist{" "}
 				<i className="ml-3 fas fa-plus" onClick={handleClick}></i>

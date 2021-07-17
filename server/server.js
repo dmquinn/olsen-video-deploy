@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./database.js");
+const bodyParser = require("body-parser");
 const SpotifyWebApi = require("spotify-web-api-node");
 const path = require("path");
 const axios = require("axios");
@@ -10,6 +11,18 @@ require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 connectDB();
 
 const app = express();
+app.use(bodyParser.json());
+if ((process.env.NODE_ENV = "production")) {
+	app.use(express.static(path.join("build")));
+
+	app.use((req, res) =>
+		res.sendFile(path.resolve(__dirname, "build", "index.html"))
+	);
+} else {
+	app.get("/", (req, res) => {
+		res.send("API is running....");
+	});
+}
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -36,15 +49,6 @@ app.post("/refresh", (req, res) => {
 			res.sendStatus(400);
 		});
 });
-if ((process.env.NODE_ENV = "production")) {
-	app.get("*", (req, res) =>
-		res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-	);
-} else {
-	app.get("/", (req, res) => {
-		res.send("API is running....");
-	});
-}
 
 app.post("/login", (req, res) => {
 	const code = req.body.code;
@@ -68,6 +72,12 @@ app.post("/login", (req, res) => {
 		});
 	spotifyApi.setAccessToken(code);
 });
+
+if ((process.env.NODE_ENV = "production")) {
+	app.use((req, res) =>
+		res.sendFile(path.resolve(__dirname, "build", "index.html"))
+	);
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(

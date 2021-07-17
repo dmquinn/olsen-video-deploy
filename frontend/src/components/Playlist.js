@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import myPlaylists from "../myplaylists";
-import playlistFake from "../playlistFake";
 import "../stylesheets/playlist.css";
 
 function Playlist() {
+	// const playlist = useSelector((state) => state.playlist);
+
 	const [filter, setFilter] = useState("");
 	const [playlistTracks, setPlaylistTracks] = useState([]);
 	const responsive = {
@@ -41,7 +43,7 @@ function Playlist() {
 		<>
 			<div className="button">
 				<Dropdown>
-					<Dropdown.Toggle>MY PLAYLISTS</Dropdown.Toggle>
+					<Dropdown.Toggle>PLAYLISTS</Dropdown.Toggle>
 					<Dropdown.Menu>
 						{myPlaylists.map((playlist, i) => {
 							return (
@@ -54,6 +56,7 @@ function Playlist() {
 								</Dropdown.Item>
 							);
 						})}
+						<Dropdown.Item>My Playlist</Dropdown.Item>
 					</Dropdown.Menu>
 				</Dropdown>
 			</div>
