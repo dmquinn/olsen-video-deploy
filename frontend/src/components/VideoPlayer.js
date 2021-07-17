@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Dropdown } from "react-bootstrap";
 import "../stylesheets/player.css";
 import axios from "axios";
 
@@ -10,9 +11,6 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 	const [video, setVideo] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [show, setShow] = useState(false);
-
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
 
 	const REACT_APP_YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
 	let videoSrc = "";
@@ -60,6 +58,20 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 				title="Video player"
 				className="iframe"
 			/>
+			<Dropdown>
+				<Dropdown.Toggle variant="success" id="dropdown-basic">
+					Add to Playlist{" "}
+				</Dropdown.Toggle>
+
+				<Dropdown.Menu>
+					<Dropdown.Item href="#/action-2">
+						Playlist One
+					</Dropdown.Item>
+					<Dropdown.Item href="#/action-3">
+						Playlist Two{" "}
+					</Dropdown.Item>
+				</Dropdown.Menu>
+			</Dropdown>
 			<p className="">
 				Add to playlist{" "}
 				<i className="ml-3 fas fa-plus" onClick={handleClick}></i>

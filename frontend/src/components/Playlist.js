@@ -3,10 +3,12 @@ import { Dropdown } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import myPlaylists from "../myplaylists";
+import playlistFake from "../playlistFake";
 import "../stylesheets/playlist.css";
 
 function Playlist() {
 	const [filter, setFilter] = useState("");
+	const [playlistTracks, setPlaylistTracks] = useState([]);
 	const responsive = {
 		superLargeDesktop: {
 			// the naming can be any, depends on you.
@@ -27,13 +29,13 @@ function Playlist() {
 		},
 	};
 
-	const selected = myPlaylists.filter((pl) => {
-		return pl.title;
-	});
-	const displayList = [...new Set(selected.map((q) => q.filter))];
 	const handleSelect = (e) => {
-		console.log(displayList);
 		setFilter(e);
+		console.log("filter", filter);
+		myPlaylists.map((item, i) => {
+			item.title === filter && console.log("it", item.title);
+			setPlaylistTracks(item.tracks);
+		});
 	};
 
 	return (
@@ -57,16 +59,11 @@ function Playlist() {
 				</Dropdown>
 			</div>
 			<Carousel responsive={responsive}>
-				{myPlaylists.title === filter &&
-					myPlaylists.tracks.map((item, i) => {
-						return (
-							<img
-								src={item[i]}
-								alt=""
-								className="playlistImage"
-							></img>
-						);
-					})}
+				{playlistTracks.map((track, i) => {
+					return (
+						<img className="playlistImage" alt="" src={track}></img>
+					);
+				})}
 			</Carousel>
 		</>
 	);
