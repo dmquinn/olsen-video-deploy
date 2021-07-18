@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import myPlaylists from "../myplaylists";
+import presetPlaylists from "../presetPlaylists";
 import "../stylesheets/playlist.css";
 
 function Playlist() {
@@ -31,9 +31,10 @@ function Playlist() {
 	};
 
 	const handleSelect = (e) => {
+		console.log("event choose playlist", e);
 		setFilter(e);
 		console.log("filter", filter);
-		myPlaylists.map((item, i) => {
+		presetPlaylists.map((item, i) => {
 			item.title === filter && console.log("it", item.title);
 			setPlaylistTracks(item.tracks);
 		});
@@ -45,7 +46,7 @@ function Playlist() {
 				<Dropdown>
 					<Dropdown.Toggle>PLAYLISTS</Dropdown.Toggle>
 					<Dropdown.Menu>
-						{myPlaylists.map((playlist, i) => {
+						{presetPlaylists.map((playlist, i) => {
 							return (
 								<Dropdown.Item
 									href=""
@@ -63,7 +64,11 @@ function Playlist() {
 			<Carousel responsive={responsive}>
 				{playlistTracks.map((track, i) => {
 					return (
-						<img className="playlistImage" alt="" src={track}></img>
+						<img
+							className="playlistImage"
+							alt=""
+							src={track.thumbnail}
+						></img>
 					);
 				})}
 			</Carousel>
