@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Dropdown } from "react-bootstrap";
 import "../stylesheets/player.css";
 import axios from "axios";
+import { addPlaylistItem } from "../actions/playlistActions";
 
 function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 	const dispatch = useDispatch();
 	const playlist = useSelector((state) => state.playlist);
-	const playlistItems = playlist;
 	const [video, setVideo] = useState("");
 	const [loading, setLoading] = useState(false);
-	const [show, setShow] = useState(false);
 
 	const REACT_APP_YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
 	let videoSrc = "";
@@ -20,17 +18,9 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 		videoSrc = `https://www.youtube.com/embed/${video}`;
 	}
 
-	const handleClick = () => {
-		console.log("line 17", selectedTrack);
-		dispatch({
-			type: "ADD_PLAYLIST_ITEM",
-			payload: {
-				item: selectedTrack,
-				id: videoSrc,
-			},
-		});
-
-		console.log("dispatch", dispatch);
+	const handleClick = (e) => {
+		console.log("videoSrc", videoSrc);
+		dispatch(addPlaylistItem(videoSrc));
 	};
 
 	useEffect(() => {
@@ -45,7 +35,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 				setLoading(true);
 				console.log(err.response);
 			});
-	}, [selectedTrack, REACT_APP_YOUTUBE_API, video, playlistVideo, dispatch]);
+	}, [selectedTrack, REACT_APP_YOUTUBE_API, video, playlistVideo]);
 
 	return (
 		<div className="player">

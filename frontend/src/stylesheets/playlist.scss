@@ -5,14 +5,30 @@
 	overflow: hidden;
 }
 .playlistContainer.active {
-	height: 380px;
+	height: 450px;
 	transition: 0.5s;
-}
-.playlistImage {
-	width: 450px;
-	height: 300px;
-	object-fit: cover;
-	padding: 20px;
+
+	li {
+		position: relative;
+		z-index: 0;
+		&:hover {
+			position: relative;
+			z-index: 9;
+			cursor: pointer;
+		}
+	}
+	.playlistImage {
+		width: 450px;
+		height: 300px;
+		object-fit: cover;
+		padding: 20px;
+		transition: 0.2s;
+
+		&:hover {
+			transform: scale(1.1);
+			transition: 0.2s;
+		}
+	}
 }
 .playlistsTab {
 	padding: 10px;
@@ -22,8 +38,12 @@
 	cursor: pointer;
 }
 @media (max-width: 768px) {
-	.playlistImage {
+	li {
 		padding: 0;
 		height: 300px;
+	}
+	.playlistsTab {
+		position: relative;
+		right: 55px;
 	}
 }

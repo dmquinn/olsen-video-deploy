@@ -7,7 +7,7 @@ export default function useAuth(code) {
 	const [refreshToken, setRefreshToken] = useState();
 	const [expiresIn, setExpiresIn] = useState();
 
-	const spotifyApi = new SpotifyWebApi({
+	new SpotifyWebApi({
 		redirectUri: process.env.REACT_APP_REDIRECT_URI,
 		clientId: process.env.REACT_APP_CLIENT_ID,
 		clientSecret: process.env.REACT_APP_CLIENT_SECRET,

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Login from "./components/Login";
 import Dashboard from "./Dashboard";
 import "./stylesheets/index.css";

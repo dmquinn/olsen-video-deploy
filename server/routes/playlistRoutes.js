@@ -1,22 +1,7 @@
-const Playlist = require("./models/playlistModel");
+const express = require("express");
+const router = express.Router();
+const { addPlaylistItem } = require("../controllers/playlistController");
 
-const addPlaylistItem = async (req, res) => {
-	const { playlistItem } = req.body;
+router.route("/").post(addPlaylistItem);
 
-	if (playlistItems && playlistItems.length === 0) {
-		res.status(400);
-		throw new Error("No playlist items");
-		return;
-	} else {
-		const playlist = new Playlist({
-			playlistItems,
-			createdBy,
-		});
-
-		const createdPlaylist = await playlist.save();
-
-		res.status(201).json(createdOrder);
-	}
-};
-
-module.exports = addPlaylistItem;
+module.exports = router;

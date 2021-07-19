@@ -32,6 +32,8 @@
 		"express": "*",
 		"mongoose": "^5.13.3",
 		"react-pro-sidebar": "^0.6.0",
+		"redux-devtools-extension": "^2.13.9",
+		"redux-thunk": "^2.3.0",
 		"spotify-web-api-node": "^5.0.2"
 	}
 }

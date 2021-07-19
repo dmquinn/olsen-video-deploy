@@ -6,7 +6,7 @@ import "react-multi-carousel/lib/styles.css";
 import presetPlaylists from "../presetPlaylists";
 import "../stylesheets/playlist.css";
 
-function Playlist() {
+function Playlist({ showPlayer }) {
 	// const playlist = useSelector((state) => state.playlist);
 
 	const [filter, setFilter] = useState("");
@@ -29,22 +29,28 @@ function Playlist() {
 			items: 1,
 		},
 	};
-
-	const handleSelect = (e) => {
-		console.log("event choose playlist", e);
-		setFilter(e);
-		console.log("filter", filter);
-		presetPlaylists.map((item, i) => {
-			item.title === filter && console.log("it", item.title);
-			setPlaylistTracks(item.tracks);
-		});
+	const handleClick = (e) => {
+		console.log(e);
+		showPlayer(e);
 	};
+	const handleSelect = (e) => {
+		console.log("first", e);
+		setFilter(e);
 
+		console.log("plt", playlistTracks);
+	};
+	useEffect(() => {
+		presetPlaylists.map((item, i) => {
+			if (item.title === filter) {
+				setPlaylistTracks(item.tracks);
+			}
+		});
+	}, [filter]);
 	return (
 		<>
 			<div className="button">
 				<Dropdown>
-					<Dropdown.Toggle>PLAYLISTS</Dropdown.Toggle>
+					<Dropdown.Toggle data-toggle="">PLAYLISTS</Dropdown.Toggle>
 					<Dropdown.Menu>
 						{presetPlaylists.map((playlist, i) => {
 							return (
@@ -61,14 +67,21 @@ function Playlist() {
 					</Dropdown.Menu>
 				</Dropdown>
 			</div>
+
+			<h1 style={{ color: "black" }}>{filter}</h1>
+
 			<Carousel responsive={responsive}>
 				{playlistTracks.map((track, i) => {
 					return (
-						<img
-							className="playlistImage"
-							alt=""
-							src={track.thumbnail}
-						></img>
+						<>
+							<img
+								className="playlistImage"
+								alt=""
+								src={track.thumbnail}
+								value={track.title}
+								onClick={(e) => handleClick(track.title)}
+							></img>
+						</>
 					);
 				})}
 			</Carousel>

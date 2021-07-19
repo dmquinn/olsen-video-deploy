@@ -7,17 +7,37 @@
 }
 
 .playlistContainer.active {
-  height: 380px;
+  height: 450px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.playlistImage {
+.playlistContainer.active li {
+  position: relative;
+  z-index: 0;
+}
+
+.playlistContainer.active li:hover {
+  position: relative;
+  z-index: 9;
+  cursor: pointer;
+}
+
+.playlistContainer.active .playlistImage {
   width: 450px;
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
   padding: 20px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.playlistContainer.active .playlistImage:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .playlistsTab {
@@ -29,9 +49,13 @@
 }
 
 @media (max-width: 768px) {
-  .playlistImage {
+  li {
     padding: 0;
     height: 300px;
+  }
+  .playlistsTab {
+    position: relative;
+    right: 55px;
   }
 }
 /*# sourceMappingURL=playlist.css.map */

@@ -89,7 +89,11 @@ export default function Dashboard({ code }) {
 					isActive ? "active" : "inactive"
 				}`}
 			>
-				<Playlist isActive={isActive} />
+				<Playlist
+					isActive={isActive}
+					showPlayer={showPlayer}
+					setSelectedTrack={setSelectedTrack}
+				/>
 			</div>
 			<div className="row w-100">
 				<p

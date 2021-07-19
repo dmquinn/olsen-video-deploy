@@ -1,17 +1,11 @@
 const mongoose = require("mongoose");
 
 const playlistSchema = mongoose.Schema({
-	createdBy: {
-		type: String,
-	},
-	playlistNumber: {
-		type: Number,
-	},
 	playlistItem: {
 		type: String,
 	},
 });
 
-const Playlist = mongoose.model("Playlist", playlistSchema);
+const PlaylistItem = mongoose.model("PlaylistItem", playlistSchema);
 
-module.exports = Playlist;
+module.exports = PlaylistItem;
