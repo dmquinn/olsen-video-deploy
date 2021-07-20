@@ -68,7 +68,12 @@ function Playlist({ showPlayer }) {
 				</Dropdown>
 			</div>
 
-			<h1 style={{ color: "black" }}>{filter}</h1>
+			<h1
+				className="offset-1"
+				style={{ color: "black", fontFamily: "Bebas Neue" }}
+			>
+				{filter}
+			</h1>
 
 			<Carousel responsive={responsive}>
 				{playlistTracks.map((track, i) => {

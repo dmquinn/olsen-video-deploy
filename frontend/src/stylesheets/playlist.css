@@ -40,6 +40,10 @@
   transition: 0.2s;
 }
 
+.dropdown-menu.show {
+  border: none !important;
+}
+
 .playlistsTab {
   padding: 10px;
   background-color: white;

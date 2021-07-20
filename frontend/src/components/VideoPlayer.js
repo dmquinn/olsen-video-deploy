@@ -4,9 +4,10 @@ import "../stylesheets/player.css";
 import axios from "axios";
 import { addPlaylistItem } from "../actions/playlistActions";
 
-function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
+function VideoPlayer({ selectedTrack, playlistVideo }) {
 	const dispatch = useDispatch();
 	const playlist = useSelector((state) => state.playlist);
+
 	const [video, setVideo] = useState("");
 	const [loading, setLoading] = useState(false);
 
@@ -19,8 +20,9 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 	}
 
 	const handleClick = (e) => {
+		e.preventDefault();
 		console.log("videoSrc", videoSrc);
-		dispatch(addPlaylistItem(videoSrc));
+		dispatch(addPlaylistItem(video));
 	};
 
 	useEffect(() => {
@@ -30,6 +32,7 @@ function VideoPlayer({ selectedTrack, playlistVideo, setPlaylistVide }) {
 			)
 			.then((response) => {
 				setVideo(response.data.items[0].id.videoId);
+				console.log("console logging from videoPlayer");
 			})
 			.catch((err) => {
 				setLoading(true);

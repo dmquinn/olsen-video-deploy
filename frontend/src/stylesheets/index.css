@@ -55,17 +55,19 @@ h4:hover {
   top: 20px;
   border: none !important;
   background-color: transparent;
-  -webkit-transform: 1s;
-          transform: 1s;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
 }
 
 .form-control:focus, .form-control:active {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: white;
+  color: black;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
-  border: none !important;
-  -webkit-transform: 1s;
-          transform: 1s;
+  border: 1px solid white !important;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 0px;
 }
 
 h1 {

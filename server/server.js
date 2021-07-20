@@ -5,6 +5,7 @@ const connectDB = require("./database.js");
 const SpotifyWebApi = require("spotify-web-api-node");
 const path = require("path");
 const playlistRoutes = require("./routes/playlistRoutes");
+const PlaylistItem = require("./models/playlistModel");
 
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 connectDB();
@@ -14,11 +15,35 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/api/playlist", (req, res) => {
-	console.log("body");
-});
+// app.post("/playlist", async (req, res) => {
+// 	console.log("body", req.body.video);
+// 	const vid = req.body.video;
+// 	await PlaylistItem.create({
+// 		vid,
+// 	});
+// 	console.log("created", vid);
+// 	if (vid) {
+// 		res.status(201).json({
+// 			vid,
+// 		});
+// 	} else {
+// 		res.status(400);
+// 		throw new Error("Invalid Playlist Action");
+// 	}
+// });
+app.post(
+	"/playlist",
 
-app.use("/api/playlist", playlistRoutes);
+	async (req, res, next) => {
+		const item = new PlaylistItem(req.body.video);
+
+		console.log("item2", item);
+		await item.save();
+		// res.redirect(`/events/${event._id}`);
+	}
+);
+
+// app.use("/api/playlist", playlistRoutes);
 
 app.post("/refresh", (req, res) => {
 	const refreshToken = req.body.refreshToken;
@@ -65,6 +90,7 @@ app.post("/login", (req, res) => {
 		});
 	spotifyApi.setAccessToken(code);
 });
+
 if ((process.env.NODE_ENV = "production")) {
 	app.use(express.static(path.join(__dirname, "../frontend/build")));
 
@@ -76,6 +102,7 @@ if ((process.env.NODE_ENV = "production")) {
 		res.send("API is running....");
 	});
 }
-app.listen(3001, () => {
-	console.log("listening on port 3001");
+
+app.listen(5000, () => {
+	console.log("listening on port 5000");
 });
