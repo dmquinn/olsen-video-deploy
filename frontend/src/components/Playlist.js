@@ -1,45 +1,25 @@
 import React, { useState, useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
-import { listPlaylistItems } from "../actions/playlistActions";
-
 import "react-multi-carousel/lib/styles.css";
 import presetPlaylists from "../presetPlaylists";
+import { responsive } from "../responsive";
 import "../stylesheets/playlist.css";
+import { listPlaylistItems } from "../actions/playlistActions";
 
-function Playlist({ showPlayer }) {
-	// const playlist = useSelector((state) => state.playlist);
-
+function Playlist({ showPlayer, state }) {
+	const dispatch = useDispatch();
 	const [filter, setFilter] = useState("");
 	const [playlistTracks, setPlaylistTracks] = useState([]);
-	const responsive = {
-		superLargeDesktop: {
-			breakpoint: { max: 4000, min: 3000 },
-			items: 5,
-		},
-		desktop: {
-			breakpoint: { max: 3000, min: 1024 },
-			items: 3,
-		},
-		tablet: {
-			breakpoint: { max: 1024, min: 464 },
-			items: 2,
-		},
-		mobile: {
-			breakpoint: { max: 464, min: 0 },
-			items: 1,
-		},
-	};
+	const [userTracks, setUserTracks] = useState({});
+	const listPlaylists = useSelector((state) => state.listPlaylists);
+	const { playlistItems } = listPlaylists;
 	const handleClick = (e) => {
-		console.log(e);
 		showPlayer(e);
 	};
 	const handleSelect = (e) => {
-		console.log("first", e);
 		setFilter(e);
-
-		console.log("plt", playlistTracks);
 	};
 	useEffect(() => {
 		presetPlaylists.map((item, i) => {
@@ -48,6 +28,13 @@ function Playlist({ showPlayer }) {
 			}
 		});
 	}, [filter]);
+
+	useEffect(() => {
+		dispatch(listPlaylistItems());
+		console.log("playlists", listPlaylists);
+		listPlaylists && setUserTracks(listPlaylists.playlist);
+		// console.log("usertracks", userTracks);
+	}, []);
 	return (
 		<>
 			<div className="button">
@@ -57,6 +44,7 @@ function Playlist({ showPlayer }) {
 						{presetPlaylists.map((playlist, i) => {
 							return (
 								<Dropdown.Item
+									key={i}
 									href=""
 									eventKey={playlist.title}
 									onSelect={handleSelect}
@@ -69,7 +57,9 @@ function Playlist({ showPlayer }) {
 					</Dropdown.Menu>
 				</Dropdown>
 			</div>
-
+			{/* {userTracks.map((track, i) => {
+				return <h1 style={{ color: "black" }}>{track.playlistItem}</h1>;
+			})} */}
 			<h1
 				className="offset-1"
 				style={{ color: "black", fontFamily: "Bebas Neue" }}

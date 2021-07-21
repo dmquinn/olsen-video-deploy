@@ -4,7 +4,7 @@ const cors = require("cors");
 const connectDB = require("./database.js");
 const SpotifyWebApi = require("spotify-web-api-node");
 const path = require("path");
-const PlaylistItem = require("./models/playlistModel");
+const PlaylistItems = require("./models/playlistModel");
 
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 connectDB();
@@ -14,20 +14,23 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const getPlaylist = app.get("/playlist", async (req, res) => {
+	PlaylistItems.find(req.body.playlistItem).then((playlistItem) => {
+		res.json(playlistItem);
+	});
+});
+
 app.post(
 	"/playlist",
 
 	async (req, res) => {
-		console.log("body", req.body.videoSrc);
-
-		const song = await PlaylistItem.create({
+		const song = await PlaylistItems.create({
 			playlistItem: req.body.videoSrc,
 		});
 		if (song) {
 			res.status(201).json({
 				playlistItem: song,
 			});
-			console.log("created");
 		} else {
 			res.status(400);
 			throw new Error("Invalid Playlist Action");
@@ -81,17 +84,17 @@ app.post("/login", (req, res) => {
 	spotifyApi.setAccessToken(code);
 });
 
-if ((process.env.NODE_ENV = "production")) {
-	app.use(express.static(path.join(__dirname, "../frontend/build")));
+// if ((process.env.NODE_ENV = "production")) {
+// 	app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-	app.get("*", (req, res) =>
-		res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-	);
-} else {
-	app.get("/", (req, res) => {
-		res.send("API is running....");
-	});
-}
+// 	app.get("*", (req, res) =>
+// 		res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+// 	);
+// } else {
+app.get("/", (req, res) => {
+	res.send("API is running....");
+});
+// }
 
 app.listen(5000, () => {
 	console.log("listening on port 5000");

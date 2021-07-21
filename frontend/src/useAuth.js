@@ -24,7 +24,6 @@ export default function useAuth(code) {
 				setRefreshToken(res.data.refreshToken);
 				setExpiresIn(res.data.expiresIn);
 				window.history.pushState({}, null, "/");
-				console.log();
 			})
 			.catch(() => {
 				window.location = "/";

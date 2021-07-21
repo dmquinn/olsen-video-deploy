@@ -9,25 +9,14 @@ import {
 } from "../reducers/playlistReducer";
 
 export const addPlaylistItem = (videoSrc) => async (dispatch) => {
-	console.log(videoSrc);
 	try {
 		dispatch({
 			type: ADD_PLAYLIST_ITEM_REQUEST,
 		});
 
-		// const config = {
-		// 	headers: {
-		// 		"Content-Type": "application/json",
-		// 	},
-		// };
-		const { data } = await axios.post(
-			"http://localhost:5000/playlist/",
-			{
-				videoSrc,
-			}
-			// config
-		);
-		console.log("data", data);
+		const { data } = await axios.post("http://localhost:5000/playlist/", {
+			videoSrc,
+		});
 
 		dispatch({
 			type: ADD_PLAYLIST_ITEM_SUCCESS,
@@ -45,13 +34,14 @@ export const addPlaylistItem = (videoSrc) => async (dispatch) => {
 	}
 };
 
-export const listPlaylistItems = () => async (dispatch, getState) => {
+export const listPlaylistItems = () => async (dispatch) => {
 	try {
 		dispatch({
 			type: LIST_PLAYLIST_ITEMS_REQUEST,
 		});
 
-		const { data } = await axios.get("http://localhost:5000/playlist/");
+		const { data } = await axios.get("http://localhost:5000/playlist", {});
+		console.log("got", data);
 
 		dispatch({
 			type: LIST_PLAYLIST_ITEMS_SUCCESS,
@@ -62,7 +52,8 @@ export const listPlaylistItems = () => async (dispatch, getState) => {
 			error.response && error.response.data.message
 				? error.response.data.message
 				: error.message;
-
+		if (message === "Not authorized, token failed") {
+		}
 		dispatch({
 			type: LIST_PLAYLIST_ITEMS_FAIL,
 			payload: message,

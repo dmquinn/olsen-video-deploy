@@ -21,9 +21,9 @@ function VideoPlayer({ selectedTrack, playlistVideo }) {
 
 	const handleClick = (e) => {
 		e.preventDefault();
-		console.log("videoSrc", videoSrc);
-		dispatch(addPlaylistItem(videoSrc));
 	};
+
+	dispatch(addPlaylistItem(videoSrc));
 
 	useEffect(() => {
 		axios
@@ -32,7 +32,6 @@ function VideoPlayer({ selectedTrack, playlistVideo }) {
 			)
 			.then((response) => {
 				setVideo(response.data.items[0].id.videoId);
-				console.log("console logging from videoPlayer");
 			})
 			.catch((err) => {
 				setLoading(true);
