@@ -22,7 +22,7 @@ function VideoPlayer({ selectedTrack, playlistVideo }) {
 	const handleClick = (e) => {
 		e.preventDefault();
 		console.log("videoSrc", videoSrc);
-		dispatch(addPlaylistItem(video));
+		dispatch(addPlaylistItem(videoSrc));
 	};
 
 	useEffect(() => {

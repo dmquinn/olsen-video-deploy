@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
+import { listPlaylistItems } from "../actions/playlistActions";
+
 import "react-multi-carousel/lib/styles.css";
 import presetPlaylists from "../presetPlaylists";
 import "../stylesheets/playlist.css";

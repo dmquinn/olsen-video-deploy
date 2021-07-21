@@ -4,7 +4,6 @@ const cors = require("cors");
 const connectDB = require("./database.js");
 const SpotifyWebApi = require("spotify-web-api-node");
 const path = require("path");
-const playlistRoutes = require("./routes/playlistRoutes");
 const PlaylistItem = require("./models/playlistModel");
 
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
@@ -15,35 +14,26 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.post("/playlist", async (req, res) => {
-// 	console.log("body", req.body.video);
-// 	const vid = req.body.video;
-// 	await PlaylistItem.create({
-// 		vid,
-// 	});
-// 	console.log("created", vid);
-// 	if (vid) {
-// 		res.status(201).json({
-// 			vid,
-// 		});
-// 	} else {
-// 		res.status(400);
-// 		throw new Error("Invalid Playlist Action");
-// 	}
-// });
 app.post(
 	"/playlist",
 
-	async (req, res, next) => {
-		const item = new PlaylistItem(req.body.video);
+	async (req, res) => {
+		console.log("body", req.body.videoSrc);
 
-		console.log("item2", item);
-		await item.save();
-		// res.redirect(`/events/${event._id}`);
+		const song = await PlaylistItem.create({
+			playlistItem: req.body.videoSrc,
+		});
+		if (song) {
+			res.status(201).json({
+				playlistItem: song,
+			});
+			console.log("created");
+		} else {
+			res.status(400);
+			throw new Error("Invalid Playlist Action");
+		}
 	}
 );
-
-// app.use("/api/playlist", playlistRoutes);
 
 app.post("/refresh", (req, res) => {
 	const refreshToken = req.body.refreshToken;

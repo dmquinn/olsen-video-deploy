@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./stylesheets/index.css";
 import App from "./App";
 import { Provider } from "react-redux";
-import playlistReducer from "./reducers/playlistReducer";
+import { playlistReducer } from "./reducers/playlistReducer";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 

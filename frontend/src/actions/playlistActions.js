@@ -3,10 +3,13 @@ import {
 	ADD_PLAYLIST_ITEM_REQUEST,
 	ADD_PLAYLIST_ITEM_SUCCESS,
 	ADD_PLAYLIST_ITEM_FAIL,
+	LIST_PLAYLIST_ITEMS_REQUEST,
+	LIST_PLAYLIST_ITEMS_SUCCESS,
+	LIST_PLAYLIST_ITEMS_FAIL,
 } from "../reducers/playlistReducer";
 
-export const addPlaylistItem = (video) => async (dispatch) => {
-	console.log("item", video);
+export const addPlaylistItem = (videoSrc) => async (dispatch) => {
+	console.log(videoSrc);
 	try {
 		dispatch({
 			type: ADD_PLAYLIST_ITEM_REQUEST,
@@ -17,9 +20,13 @@ export const addPlaylistItem = (video) => async (dispatch) => {
 		// 		"Content-Type": "application/json",
 		// 	},
 		// };
-		const { data } = await axios.post("http://localhost:5000/playlist/", {
-			video,
-		});
+		const { data } = await axios.post(
+			"http://localhost:5000/playlist/",
+			{
+				videoSrc,
+			}
+			// config
+		);
 		console.log("data", data);
 
 		dispatch({
@@ -27,7 +34,6 @@ export const addPlaylistItem = (video) => async (dispatch) => {
 			payload: data,
 		});
 		localStorage.setItem("playlistItem", JSON.stringify(data));
-		console.log(localStorage);
 	} catch (error) {
 		dispatch({
 			type: ADD_PLAYLIST_ITEM_FAIL,
@@ -35,6 +41,31 @@ export const addPlaylistItem = (video) => async (dispatch) => {
 				error.response && error.response.data.message
 					? error.response.data.message
 					: error.message,
+		});
+	}
+};
+
+export const listPlaylistItems = () => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: LIST_PLAYLIST_ITEMS_REQUEST,
+		});
+
+		const { data } = await axios.get("http://localhost:5000/playlist/");
+
+		dispatch({
+			type: LIST_PLAYLIST_ITEMS_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		const message =
+			error.response && error.response.data.message
+				? error.response.data.message
+				: error.message;
+
+		dispatch({
+			type: LIST_PLAYLIST_ITEMS_FAIL,
+			payload: message,
 		});
 	}
 };
