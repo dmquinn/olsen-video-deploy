@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const app = express();
 const connectDB = require("./database.js");
 const SpotifyWebApi = require("spotify-web-api-node");
 const path = require("path");
@@ -9,7 +10,6 @@ const PlaylistItems = require("./models/playlistModel");
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 connectDB();
 
-const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,11 +26,14 @@ app.post(
 	async (req, res) => {
 		const song = await PlaylistItems.create({
 			playlistItem: req.body.videoSrc,
+			title: req.body.selectedTrack,
+			createdBy: req.body.userId,
 		});
 		if (song) {
 			res.status(201).json({
 				playlistItem: song,
 			});
+			console.log("created:", song);
 		} else {
 			res.status(400);
 			throw new Error("Invalid Playlist Action");

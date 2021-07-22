@@ -20,6 +20,8 @@ export default function Dashboard({ code }) {
 	const [userName, setUserName] = useState("");
 	const [userId, setUserId] = useState("");
 	const [isActive, setIsActive] = useState(false);
+	const [tempPlaylist, setTempPlaylist] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const dropdownRef = useRef(null);
 
@@ -62,9 +64,9 @@ export default function Dashboard({ code }) {
 				})
 			);
 		});
-
 		return () => (cancel = true);
 	}, [search, accessToken]);
+
 	const handleDropdown = () => setIsActive(!isActive);
 	const handleChange = (e) => {
 		setSearch(e.target.value);
@@ -78,9 +80,7 @@ export default function Dashboard({ code }) {
 	const handleCloseTest = () => {
 		setSelectedTrack("");
 	};
-	const selectFromPlaylist = (video) => {
-		setSelectedTrack(video);
-	};
+
 	return (
 		<>
 			<div
@@ -93,6 +93,9 @@ export default function Dashboard({ code }) {
 					isActive={isActive}
 					showPlayer={showPlayer}
 					setSelectedTrack={setSelectedTrack}
+					userId={userId}
+					setLoading={setLoading}
+					tempPlaylist={tempPlaylist}
 				/>
 			</div>
 			<div className="row w-100">
@@ -116,10 +119,6 @@ export default function Dashboard({ code }) {
 				</div>
 			</div>
 			<div className="p-5">
-				{/* <img
-						src="https://img.youtube.com/vi/nleRCBhLr3k/0.jpg
-"
-					></img> */}
 				<div className="">
 					<div className="searchBar mr-auto">
 						<Form.Control
@@ -156,6 +155,8 @@ export default function Dashboard({ code }) {
 										<VideoPlayer
 											selectedTrack={selectedTrack}
 											playlistVideo={playlistVideo}
+											userId={userId}
+											setTempPlaylist={setTempPlaylist}
 										/>
 									</div>
 								)}

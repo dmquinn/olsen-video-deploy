@@ -6,35 +6,45 @@ import "react-multi-carousel/lib/styles.css";
 import presetPlaylists from "../presetPlaylists";
 import { responsive } from "../responsive";
 import "../stylesheets/playlist.css";
-import { listPlaylistItems } from "../actions/playlistActions";
+import { listPlaylistAction } from "../actions/playlistActions";
 
-function Playlist({ showPlayer, state }) {
+function Playlist({ showPlayer, userId, tempPlaylist }) {
 	const dispatch = useDispatch();
 	const [filter, setFilter] = useState("");
 	const [playlistTracks, setPlaylistTracks] = useState([]);
-	const [userTracks, setUserTracks] = useState({});
+	const [userTracks, setUserTracks] = useState([]);
+
 	const listPlaylists = useSelector((state) => state.listPlaylists);
-	const { playlistItems } = listPlaylists;
 	const handleClick = (e) => {
 		showPlayer(e);
 	};
 	const handleSelect = (e) => {
+		setUserTracks([]);
 		setFilter(e);
+	};
+	const handleMyPlaylist = (e) => {
+		setPlaylistTracks(null);
+		listPlaylists && setUserTracks(listPlaylists.playlist);
 	};
 	useEffect(() => {
 		presetPlaylists.map((item, i) => {
-			if (item.title === filter) {
-				setPlaylistTracks(item.tracks);
-			}
+			item.title === filter && setPlaylistTracks(item.tracks);
 		});
 	}, [filter]);
 
 	useEffect(() => {
-		dispatch(listPlaylistItems());
-		console.log("playlists", listPlaylists);
-		listPlaylists && setUserTracks(listPlaylists.playlist);
-		// console.log("usertracks", userTracks);
+		console.log("video", userId);
+
+		userTracks.map((track, i) => {
+			userId === track.createdBy && console.log("match", track.createdBy);
+		});
+		dispatch(listPlaylistAction());
 	}, []);
+	useEffect(() => {
+		console.log("tempPlaylist", tempPlaylist);
+		return tempPlaylist;
+	}, [tempPlaylist]);
+
 	return (
 		<>
 			<div className="button">
@@ -53,35 +63,74 @@ function Playlist({ showPlayer, state }) {
 								</Dropdown.Item>
 							);
 						})}
-						<Dropdown.Item>My Playlist</Dropdown.Item>
+						<Dropdown.Item href="" onSelect={handleMyPlaylist}>
+							My Playlist
+						</Dropdown.Item>
 					</Dropdown.Menu>
 				</Dropdown>
 			</div>
-			{/* {userTracks.map((track, i) => {
-				return <h1 style={{ color: "black" }}>{track.playlistItem}</h1>;
-			})} */}
-			<h1
-				className="offset-1"
-				style={{ color: "black", fontFamily: "Bebas Neue" }}
-			>
-				{filter}
-			</h1>
 
-			<Carousel responsive={responsive}>
-				{playlistTracks.map((track, i) => {
-					return (
-						<>
-							<img
-								className="playlistImage"
-								alt=""
-								src={track.thumbnail}
-								value={track.title}
-								onClick={(e) => handleClick(track.title)}
-							></img>
-						</>
-					);
-				})}
-			</Carousel>
+			{!!playlistTracks ? (
+				<Carousel responsive={responsive}>
+					{playlistTracks.map((track, i) => {
+						return (
+							<>
+								<img
+									key={i}
+									className="playlistImage"
+									alt=""
+									src={track.thumbnail}
+									value={track.title}
+									onClick={(e) => handleClick(track.title)}
+								></img>
+								<h6 className="button offset-1">
+									{track.title}
+								</h6>
+							</>
+						);
+					})}
+					{tempPlaylist.map((track, i) => {
+						return (
+							<>
+								<img
+									key={i}
+									className="playlistImage"
+									alt=""
+									src={track.thumbnail}
+									value={track.title}
+									onClick={(e) => handleClick(track.thumb)}
+								></img>
+								<h6 className="button offset-1">
+									{track.title}
+								</h6>
+							</>
+						);
+					})}
+				</Carousel>
+			) : (
+				<Carousel responsive={responsive}>
+					{userTracks.map((track, i) => {
+						return (
+							userId === track.createdBy && (
+								<>
+									<img
+										className="playlistImage"
+										alt=""
+										src={`https://img.youtube.com/vi/${track.playlistItem}/sddefault.jpg`}
+										value={track.title}
+										onClick={(e) =>
+											handleClick(track.title)
+										}
+									></img>
+									<h6 className="button offset-1">
+										{track.title}
+									</h6>{" "}
+								</>
+							)
+						);
+					})}
+				</Carousel>
+			)}
 		</>
 	);
 }
