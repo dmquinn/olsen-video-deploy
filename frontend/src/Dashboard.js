@@ -20,7 +20,7 @@ export default function Dashboard({ code }) {
 	const [userName, setUserName] = useState("");
 	const [userId, setUserId] = useState("");
 	const [isActive, setIsActive] = useState(false);
-	const [tempPlaylist, setTempPlaylist] = useState([]);
+	const [tempPlaylist, setTempPlaylist] = useState("");
 	const [loading, setLoading] = useState(false);
 
 	const dropdownRef = useRef(null);

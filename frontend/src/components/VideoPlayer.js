@@ -12,11 +12,13 @@ function VideoPlayer({
 	tempPlaylist,
 }) {
 	const dispatch = useDispatch();
-	useSelector((state) => state.playlist);
+
+	const REACT_APP_YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
+
 	const [video, setVideo] = useState("");
 	const [loading, setLoading] = useState("");
 
-	const REACT_APP_YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API;
+	useSelector((state) => state.playlist);
 
 	const videoSrc = `https://www.youtube.com/embed/${video}`;
 	const videoThumb = videoSrc.substring(videoSrc.length - 11);
@@ -26,6 +28,7 @@ function VideoPlayer({
 		const vidObject = { title: selectedTrack, thumb: videoSrc };
 		temporaryPlaylist.push(vidObject);
 		setTempPlaylist(temporaryPlaylist);
+
 		dispatch(addPlaylistItem(videoThumb, selectedTrack, userId));
 	};
 
@@ -46,6 +49,10 @@ function VideoPlayer({
 
 	return (
 		<div className="player">
+			<p className="">
+				Add to playlist{" "}
+				<i className="ml-3 fas fa-plus" onClick={handleClick}></i>
+			</p>
 			<iframe
 				src={
 					videoSrc +
@@ -56,11 +63,6 @@ function VideoPlayer({
 				title="Video player"
 				className="iframe"
 			/>
-
-			<p className="">
-				Add to playlist{" "}
-				<i className="ml-3 fas fa-plus" onClick={handleClick}></i>
-			</p>
 		</div>
 	);
 }
