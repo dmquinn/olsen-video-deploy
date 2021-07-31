@@ -16,7 +16,7 @@ export const addPlaylistItem =
 			});
 
 			const { data } = await axios.post(
-				"https://olsenvideo.herokuapp.com/playlist/",
+				"http://localhost:5000/playlist/",
 				{
 					videoSrc,
 					selectedTrack,
@@ -47,10 +47,7 @@ export const listPlaylistAction = () => async (dispatch) => {
 			type: LIST_PLAYLIST_ITEMS_REQUEST,
 		});
 
-		const { data } = await axios.get(
-			"https://olsenvideo.herokuapp.com/playlist",
-			{}
-		);
+		const { data } = await axios.get("http://localhost:5000/playlist/", {});
 
 		dispatch({
 			type: LIST_PLAYLIST_ITEMS_SUCCESS,

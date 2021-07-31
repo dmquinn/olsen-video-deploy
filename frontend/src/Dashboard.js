@@ -15,12 +15,12 @@ export default function Dashboard({ code }) {
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [selectedTrack, setSelectedTrack] = useState("");
-	const [selectPlaylist, setSelectPlaylist] = useState("");
 	const [playlistVideo, setPlaylistVideo] = useState("");
 	const [userName, setUserName] = useState("");
 	const [userId, setUserId] = useState("");
 	const [isActive, setIsActive] = useState(false);
 	const [tempPlaylist, setTempPlaylist] = useState("");
+	const [mobile, setMobile] = useState();
 	const [loading, setLoading] = useState(false);
 
 	const dropdownRef = useRef(null);
@@ -67,6 +67,12 @@ export default function Dashboard({ code }) {
 		return () => (cancel = true);
 	}, [search, accessToken]);
 
+	useEffect(() => {
+		const width = window.innerWidth;
+		width < 768 && setMobile(width);
+		console.log(width);
+		console.log(mobile);
+	}, [window.innerWidth, mobile]);
 	const handleDropdown = () => setIsActive(!isActive);
 	const handleChange = (e) => {
 		setSearch(e.target.value);
@@ -119,49 +125,46 @@ export default function Dashboard({ code }) {
 				</div>
 			</div>
 			<div className="p-5">
-				<div className="">
-					<div className="searchBar mr-auto">
-						<Form.Control
-							type="search"
-							placeholder="Search Songs/Artists"
-							value={search}
-							onChange={handleChange}
-							showPlayer={showPlayer}
-						/>
-					</div>
-
-					<div className="row">
-						<div className="mt-4 searchResults col-lg-6">
-							{searchResults.map((track, id) => (
-								<TrackSearchResult
-									track={track}
-									key={track.uri}
-									showPlayer={showPlayer}
-									setPlaylistVideo={setPlaylistVideo}
-									setSelectedTrack={setSelectedTrack}
-								/>
-							))}
-						</div>
-						{selectedTrack && (
-							<>
-								<p
-									className="closeButton button"
-									onClick={handleCloseTest}
-								>
-									CLOSE VIDEO
-								</p>
-								{searchResults && (
-									<div className="col-lg-6 ">
-										<VideoPlayer
-											selectedTrack={selectedTrack}
-											playlistVideo={playlistVideo}
-											userId={userId}
-											setTempPlaylist={setTempPlaylist}
-										/>
-									</div>
-								)}
-							</>
-						)}
+				<div className="searchBar ml-auto d-flex flex-row-reverse">
+					<Form.Control
+						type="search"
+						placeholder="Search Songs/Artists"
+						value={search}
+						onChange={handleChange}
+						showPlayer={showPlayer}
+					/>
+				</div>
+				<div className="row">
+					{selectedTrack && (
+						<>
+							<p
+								className="closeButton button"
+								onClick={handleCloseTest}
+							>
+								CLOSE VIDEO
+							</p>
+							{searchResults && (
+								<div className="col-lg-8 col-sm-12">
+									<VideoPlayer
+										selectedTrack={selectedTrack}
+										playlistVideo={playlistVideo}
+										userId={userId}
+										setTempPlaylist={setTempPlaylist}
+									/>
+								</div>
+							)}
+						</>
+					)}
+					<div className="mt-4 searchResults col-lg-4 col-sm-12">
+						{searchResults.map((track, id) => (
+							<TrackSearchResult
+								track={track}
+								key={track.uri}
+								showPlayer={showPlayer}
+								setPlaylistVideo={setPlaylistVideo}
+								setSelectedTrack={setSelectedTrack}
+							/>
+						))}
 					</div>
 				</div>
 
@@ -183,4 +186,3 @@ export default function Dashboard({ code }) {
 		</>
 	);
 }
-//

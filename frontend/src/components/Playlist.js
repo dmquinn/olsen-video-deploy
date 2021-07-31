@@ -16,7 +16,6 @@ function Playlist({ showPlayer, userId, tempPlaylist }) {
 	const [userTracks, setUserTracks] = useState([]);
 	const [tempTracks, setTempTracks] = useState([]);
 	const listPlaylists = useSelector((state) => state.listPlaylists);
-	console.log("loop", tempTracks);
 
 	const handleClick = (e) => {
 		showPlayer(e);
@@ -37,11 +36,6 @@ function Playlist({ showPlayer, userId, tempPlaylist }) {
 	}, [filter]);
 
 	useEffect(() => {
-		console.log("video", userId);
-
-		userTracks.map((track, i) => {
-			userId === track.createdBy && console.log("match", track.createdBy);
-		});
 		dispatch(listPlaylistAction());
 	}, []);
 

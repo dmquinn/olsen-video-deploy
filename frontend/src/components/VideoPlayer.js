@@ -44,12 +44,11 @@ function VideoPlayer({
 				setLoading(true);
 				console.log(err.response);
 			});
-		console.log("userId from vp", userId);
 	}, [selectedTrack, REACT_APP_YOUTUBE_API, video, playlistVideo]);
 
 	return (
 		<div className="player">
-			<p className="">
+			<p className="offset-5">
 				Add to playlist{" "}
 				<i className="ml-3 fas fa-plus" onClick={handleClick}></i>
 			</p>
